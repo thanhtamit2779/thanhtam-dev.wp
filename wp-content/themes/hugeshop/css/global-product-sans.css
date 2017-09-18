@@ -1,0 +1,35 @@
+@font-face {
+			font-family:Product_Sans;src:url(../fonts/Product_Sans_Regular.eot);src:local('☺'),
+                url(../fonts/Product_Sans_Regular.eot?#iefix) format('embedded-opentype'),
+                url(../fonts/Product_Sans_Regular.woff) format('woff'),
+                url(../fonts/Product_Sans_Regular.ttf) format('truetype')
+			}
+
+          
+
+			@font-face {
+			font-family:Product_Sans;src:url(../fonts/Product_Sans_Italic.eot);
+            src:local('☺'),url(../fonts/Product_Sans_Italic.eot?#iefix) format('embedded-opentype'),
+                url(../fonts/Product_Sans_Italic.woff) format('woff'),
+                url(../fonts/Product_Sans_Italic.ttf) format('truetype');font-style:italic
+			}
+
+			@font-face {
+			font-family:Product_Sans;src:url(../fonts/Product_Sans_SemiBold.eot);
+            src:local('☺'),url(../fonts/Product_Sans_SemiBold.eot?#iefix) format('embedded-opentype'),
+                url(../fonts/Product_Sans_SemiBold.woff) format('woff'),
+                url( ../fonts/Product_Sans_SemiBold.ttf) format('truetype');font-weight:700
+			}
+           
+
+			@font-face {
+			font-family:Product_Sans;src:url(../fonts/Product_Sans_SemiBoldItalic.eot);src:local('☺'),
+                url(../fonts/Product_Sans_SemiBoldItalic.eot?#iefix) format('embedded-opentype'),
+                url(../fonts/Product_Sans_SemiBoldItalic.woff) format('woff'),
+                url(../fonts/Baomoi-SemiBoldItalic_gdi.ttf) format('truetype');font-weight:700;font-style:italic
+			}
+
+			body,.block2 h1
+			{
+			font-family: Product_Sans,Arial,Helvetica,sans-serif !important;
+			}

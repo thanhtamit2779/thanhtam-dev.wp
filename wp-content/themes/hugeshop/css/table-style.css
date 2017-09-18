@@ -1,0 +1,127 @@
+.full {
+	/*float: left;*/
+	width: 100%;
+	margin-bottom: 30px;
+}
+
+table.tableSorter th div.sortArrow {
+	width: 11px;
+	height: 6px;
+	display: inline-block;
+	margin-left: 5px;
+	vertical-align: 2px;
+	position: relative;
+}
+
+table.tableSorter th div.sortArrow div.sortArrowAscending,
+table.tableSorter th div.sortArrow div.sortArrowDescending {
+	position: absolute;
+	display: none;
+	width: 11px;
+	height: 6px;
+}
+
+table.tableSorter th div.sortArrow div.sortArrowAscending {
+	background: url('../images/arrow_asc.png');
+}
+
+table.tableSorter th div.sortArrow div.sortArrowDescending {
+	background: url('../images/arrow_desc.png') no-repeat;
+}
+
+table.tableSorter {
+	border-collapse: collapse;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #666;
+	font-size: 12px;
+	background-color: #fff;
+}
+
+table.tableSorter th {
+	background-color: #666;
+	color: #fff;
+}
+
+table.tableSorter tr {
+	border-bottom: 1px solid #666;
+}
+
+table.tableSorter {
+	border-left: 1px solid #666;
+	border-right: 1px solid #666;
+}
+
+table.tableSorter td, 
+table.tableSorter th {
+	padding: 10px 3px;
+}
+
+
+
+
+
+
+.wpcrown-metabox-table label span {
+	line-height: 20px; 
+	display: block; 
+	color: #999; 
+	margin: 5px 0 0 0;
+}
+
+.wpcrown-metabox-table input,
+.wpcrown-metabox-table textarea {
+	width: 100%; 
+	margin-right: 20px; 
+	float: left;
+}
+
+
+/* Review Back-end */
+.option_item {
+	background: #FFF;
+	margin: 0 -10px 0 -10px;
+	border-bottom: 1px solid #EEE;
+	padding: 14px 10px 14px 10px;
+	width: 100%;
+}
+
+.option_item span.text {
+	float: left;
+	display: block;
+	width: 96px;
+	margin-top: 5px;
+}
+
+.option_item .criteria_name {
+	float: left;
+	margin-right: 36px;
+}
+
+.option_item .rating_slider {
+	width: 200px;
+	float: left;
+	margin-right: 16px;
+	margin-top: 6px;
+	height: 10px;
+}
+
+.option_item .slider_value {
+	width: 34px;
+	margin-right: 12px;
+	float: left;
+}
+
+.option_item .color-criterion-div {
+	float: left;
+}
+
+.option_item span.text {
+	width: 100px;
+	margin-right: 10px;
+}
+
+.option_item input {
+	float: left;
+	margin-right: 20px;
+}
+

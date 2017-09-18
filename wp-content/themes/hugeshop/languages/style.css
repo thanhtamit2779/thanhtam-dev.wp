@@ -1,0 +1,260 @@
+/*
+Theme Name: Hugeshop Cosmetic12
+Theme URI: http://demo.impress-theme/hugeshop
+Author: Impress-Theme
+Author URI: http://impress-theme.com/
+Description:  Cosmetic12 - child theme of HugeShop.
+Template: hugeshop
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: black, brown, orange, tan, white, yellow, light, one-column, two-columns, right-sidebar, fluid-layout, custom-header, custom-menu, editor-style, featured-images, microformats, post-formats, sticky-post
+Text Domain: hugeshop
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+
+.alignnone {
+    margin: 5px 20px 20px 0;
+}
+.aligncenter,
+div.aligncenter {
+    display: block;
+    margin: 5px auto 5px auto;
+}
+.alignright {
+    float:right;
+    margin: 5px 0 20px 20px;
+}
+.alignleft {
+    float: left;
+    margin: 5px 20px 20px 0;
+}
+a img.alignright {
+    float: right;
+    margin: 5px 0 20px 20px;
+}
+a img.alignnone {
+    margin: 5px 20px 20px 0;
+}
+a img.alignleft {
+    float: left;
+    margin: 5px 20px 20px 0;
+}
+a img.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+.wp-caption {
+    background: #fff;
+	border: none;
+    max-width: 100%; /* Image does not overflow the content area */
+    padding: 5px 3px 10px;
+    text-align: center;
+}
+.wp-caption.alignnone {
+    margin: 5px 20px 20px 0;
+}
+.wp-caption.alignleft {
+    margin: 5px 20px 20px 0;
+}
+.wp-caption.alignright {
+    margin: 5px 0 20px 20px;
+}
+.wp-caption img {
+    border: 0 none;
+    height: auto;
+    margin: 0;
+    max-width: 98.5%;
+    padding: 0;
+    width: auto;
+}
+.wp-caption p.wp-caption-text {
+    font-size: 12px;
+    line-height: 17px;
+    margin: 3px 0 0;
+    padding: 0 4px 5px;
+}
+.wp-caption .wp-caption-text,
+.gallery-caption,
+.entry-caption {
+	font-style: italic;
+	font-size: 12px;
+	line-height: 2;
+	color: #757575;
+}
+
+.box .box-inner{
+	color: #fff;
+	font-family: sans-serif;
+}
+.box .box-inner h2{
+	color: #fff;
+    font-weight: 400;
+    font-size: 16px;
+}
+.main-container .home-static1 .box:hover .box-inner:before {
+  -webkit-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+}
+.main-container .home-static1 .box .box-inner {
+  position: relative;
+  padding-left: 55px;
+}
+.main-container .home-static1 .box .box-inner:before {
+  border-radius: 100%;
+  color: #fff;
+  width: 50px;
+  height: 50px;
+  font-family: 'simple-line-icons';
+  font-size: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+  text-align: center;
+  line-height: 50px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  -webkit-transition: all 0.4s ease-out;
+  -moz-transition: all 0.4s ease-out;
+  -ms-transition: all 0.4s ease-out;
+  -o-transition: all 0.4s ease-out;
+}
+.main-container .home-static1 .box .box-inner h2 {
+  font-weight: 700;
+  font-size: 15px;
+  text-transform: uppercase;
+}
+.main-container .home-static1 .box .box-inner p {
+  font-weight: 600;
+  font-size: 14px;
+}
+.main-container .home-static1 .box.box1 .box-inner:before {
+  content: "\e048";
+  font-size: 40px;
+}
+.main-container .home-static1 .box.box2 .box-inner:before {
+  content: "\e05c";
+  font-size: 40px;
+}
+.main-container .home-static1 .box.box3 .box-inner:before {
+  content: "\e098";
+  font-size: 40px;
+}
+.main-container .home-static1 .box.box4 .box-inner:before {
+  content: "\e053";
+  font-size: 40px;
+}
+
+.header-container .header .nav-container{
+	background-color: transparent;
+}
+.header-container .header .nav-container .nav-inner{
+	background-color: #59bd56;
+}
+.header-container .header .header-sticky{
+	position: absolute;
+	width: 100%;
+}
+.vc_row.wpb_row.vc_row-fluid.home-slider.full-width {
+    margin: 0px;
+}
+.bot-slider{
+	background-color: #59bd56;
+	position: absolute;
+    padding: 20px 0 20px 20px;
+    bottom: 0px;
+    left: 30px;
+    right: 30px;
+}
+
+
+#mega_main_menu > .menu_holder > .menu_inner > ul > li[class*="columns"] {
+    width: 100%;
+    border-top:1px solid #3B3C3F;
+}
+#mega_main_menu > .menu_holder > .menu_inner > ul > li[class*="columns"] {
+    width: 100%;
+    border-top:1px solid #3B3C3F;
+}
+#mega_main_menu > .menu_holder > .menu_inner > ul > li[class*="columns"]:first-child {
+    border:none;
+}
+#mega_main_menu.mega_main_sidebar_menu.primary_style-buttons > .menu_holder > .menu_inner > .nav_logo > .mobile_toggle, #mega_main_menu.mega_main_sidebar_menu > .menu_holder > .menu_inner > ul > li > .item_link:hover {
+    background-color: #363a40;
+    color: #59bd56;
+}
+#mega_main_menu.mega_main_sidebar_menu > .menu_holder > .menu_inner > ul > li > .item_link:hover > .link_content > .link_text {
+    color: #59bd56;
+}
+#mega_main_menu.mega_main_sidebar_menu > .menu_holder > .menu_inner > ul > li > .item_link > .link_content > .link_text {
+    font-size: 15px;
+    font-weight: normal;
+}
+
+#mega_main_menu.first-lvl-align-left > .menu_holder > .menu_inner > ul{
+    border:1px solid #f1f1f1;
+    border-top: none;
+}
+#mega_main_menu.mega_main_sidebar_menu > .menu_holder > .menu_inner > ul > li.default_dropdown .mega_dropdown, #mega_main_menu.mega_main_sidebar_menu > .menu_holder > .menu_inner > ul > li > .mega_dropdown, #mega_main_menu.mega_main_sidebar_menu > .menu_holder > .menu_inner > ul > li .mega_dropdown > li .post_details{
+	left: 100%;
+	top: 0;
+}
+.menuslider-title-h4{
+    background-color: #59bd56;
+    font-style: 15px;
+    height: 50px;
+    line-height: 50px;
+    color: #fff;
+    text-transform: uppercase;
+    padding-left: 10px;
+    font-weight: normal;
+    margin: 0 1px;
+}
+.home-menu-catagorie .vc_column-inner{
+	padding-right:0px !important;
+}
+
+.woocommerce .ratings, .woocommerce .woocommerce-product-rating, .woocommerce-page .ratings, .woocommerce-page .woocommerce-product-rating{
+  display: none;
+}
+}
+.footer .newsletter-payment{
+    display: none;
+}
+.footer .footer-top .menu-container {
+    padding: 20px 0 0px 0;
+}
+.footer .footer-top .about-container{
+    padding: 20px 30px 1px 0;
+}
+.footer .footer-top .about-container .widget_about_us {
+    margin-bottom: 0;
+}
+.footer .footer-top .about-container .widget_about_us ul li {
+    margin-bottom: 3px;
+}
+.footer .footer-top .about-container .widget-logo {
+    margin-bottom: 10px;
+}
+.footer .widget-title, .footer .widgettitle {
+    margin: 0 0 5px;
+}
+.footer .menu-container ul.nav_menu li a{
+    color: #666;
+}
+.footer .menu-container h3.widget-title{
+    color: #fff;
+}
+.footer .footer-top .about-container .widget_about_us ul li i{
+    border: 2px solid #666;
+    color: #666;
+}
+.footer .footer-bottom .footer-bottom-inner{
+  padding: 5px 0;
+}
