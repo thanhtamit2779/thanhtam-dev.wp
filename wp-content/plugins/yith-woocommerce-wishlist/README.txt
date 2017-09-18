@@ -1,24 +1,25 @@
 === YITH WooCommerce Wishlist === 
 
 Contributors: yithemes
-Tags: wishlist, woocommerce, products, themes, yit, e-commerce, shop, ecommerce wishlist, yith, woocommerce wishlist, woocommerce 2.3 ready, shop wishlist
+Tags: wishlist, woocommerce, products, yit, e-commerce, shop, ecommerce wishlist, yith, woocommerce wishlist, shop wishlist
 Requires at least: 4.0
-Tested up to: 4.4
-Stable tag: 2.0.13
+Tested up to: 4.7.4
+Stable tag: 2.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 YITH WooCommerce Wishlist add all Wishlist features to your website. Needs WooCommerce to work.
-WooCommerce 2.4.x compatible.
+WooCommerce 3.0.x compatible.
 
 
 == Description ==
 
-What can really make the difference in conversions and amount of sales is without a doubt the freedom to share your own wishlist, even on social networks, increasing indirect sales: can you imagine the sales volume you can generate during holidays or birthdays, when relatives and friends will be looking for the wishlist of your clients to buy a gift?
+What can really make the difference in conversions and amount of sales is, without a doubt, the freedom to share your own wishlist, even on social networks. 
+This increases indirect sales. Can you imagine the sales volume that can be generated during holidays or birthdays, when relatives and friends will be looking at your clients' wishlists in search for a gift to buy?
 
-Offer to your visitors a chance to add the products of your woocommerce store to a wishlist page. With YITH WooCommerce Wishlist you can add a link in each product detail page,
-in order to add the products to the wishlist page. The plugin will create you the specific page and the products will be added in this page and
-afterwards add them to the cart or remove them.
+Offer your visitors the chance to add the products of your WooCommerce store to a wishlist page. With YITH WooCommerce Wishlist you can add a link on each product detail page. 
+Clicking on this will add the product to a Wishlist page, that is automatically created by the plugin for you. 
+Users will then be able to manage their Wishlist by moving products gathered here to the cart or by simply removing them.
 
 Working demo are available:
 
@@ -34,11 +35,14 @@ This plugin is 100% compatible with [WPML](http://wpml.org/?aid=24889&affiliate_
 
 * Chinese - CHINA
 * Chinese - TAIWAN
+* Croatian - CROATIA
+* Danish - DENMARK
 * English - UNITED KINGDOM (Default)
 * French - FRANCE
 * German - GERMANY
 * Hebrew - ISRAEL
 * Italian - ITALY
+* Korean - KOREA
 * Persian - IRAN, ISLAMIC REPUBLIC OF
 * Polish - POLAND
 * Portuguese - BRAZIL
@@ -105,24 +109,100 @@ you should ask theme developers to update custom templates and replace the old t
 
 == Changelog ==
 
-= 2.0.13 =
+= 2.1.2 - Released: May, 11 - 2017 =
 
-* Added check over adding_to_cart event data existance in js procedures
-* Added 'yith_wcwl_added_to_cart_message' filter, to customize added to cart message in wishlist page
-* Added nofollow to "Add to Wishlist" links, where missing
-* Added 'yith_wcwl_email_share_subject' filter to customize share by email subject
-* Added 'yith_wcwl_email_share_body' filter to customize share by email body
-* Added function "yith_wcwl_count_all_products"
-* Fixed plugin-fw loading
+* Tweak: updated FontAwesome to 4.7.0
+* Fix: possible warning when empty rewrite rules
+* Fix: problem with custom CSS inclusion, when not located in child theme
+* Fix: using current_product instead of global product when retrieving product type (prevents a Fatal error when placing Add to Wishlist outside the loop)
 
-= 2.0.12 =
+= 2.1.1 - Released: Apr, 21 - 2017 =
+
+* Tweak: improved endpoints creation, with dynamic flush
+* Tweak: added check over wc_print_notices existence, to avoid possible fatal errors
+* Tweak: updated plugin-fw
+* Fix: problem with duplicated meta
+* Fix: product created wince WC 3.0.x not being shown on wishlist
+
+= 2.1.0 - Released: Apr, 03 - 2017 =
+
+* New: WooCommerce 3.0-RC2 compatibility
+* New: WordPress 4.7.3 compatibility
+* New: Korean translation (thanks to kocne)
+* New: Croatian translation (thanks to Barbara V.)
+* New: flush rewrite rules when installing plugin
+* Tweak: added urlencode to mail content in mailto share link
+* Tweak: count query of count_all_products
+* Tweak: improved WPML list content handling (thanks to Adri)
+* Tweak: double check over wc_add_to_cart_params exists and not null
+* Tweak: added wishlist meta inside wishlist table data attr also for not logged in users (used for shared wishlist)
+* Tweak: remove prettyPhoto-init library
+* Tweak: implemented custom code to enable prettyPhoto on Wishlist elements
+* Tweak: fixed typo in wishlist-view template
+* Tweak: added urlencode to all sharing links
+* Tweak: minimized endpoint usage when not required
+* Tweak: removed unused check for WC_Product_Bundle
+* Fix: get_template_directory for custom wishlist js
+* Fix: stock_status not existing when stock column isn't shown
+* Dev: action as second param for yith_wcwl_wishlist_page_url filter
+* Dev: applied filter yith_wcwl_no_product_to_remove_message also for message on wishlist-view template
+* Dev: added filter yith_wcwl_add_wishlist_user_id
+* Dev: added filter yith_wcwl_add_wishlist_slug
+
+= 2.0.16 - Released: Jun, 14 - 2016 =
+
+* Added: WooCommerce 2.6 support
+* Tweak: changed uninstall procedure to work with multisite and delete plugin options
+* Tweak: removed description and image from facebook share link (fb doesn't allow anymore)
+* Fixed: product query (GROUP By and LIMIT statement conflicting)
+
+= 2.0.15 - Released: Apr, 04 - 2016 =
+
+* Added: filter yith_wcwl_is_product_in_wishlist to choose whether a product is in wishlist or not
+* Added: filter yith_wcwl_cookie_expiration to set default wishlist cookie expiration time in seconds
+* Tweak: updated plugin-fw
+* Fixed: get_products query returning product multiple times when product has more then one visibility meta
+
+= 2.0.14 - Released: Mar, 21 - 2016 =
+
+* Added: Dutch translation (thanks to w.vankuipers)
+* Added: Danish translation (thanks to Morten)
+* Added: yith_wcwl_is_wishlist_page function to identify if current page is wishlist page
+* Added: filter yith_wcwl_settings_panel_capability for panel capability
+* Added: filter yith_wcwl_current_wishlist_view_params for shortcode view params
+* Added: "defined YITH_WCWL" check before every template
+* Added: check over existance of $.prettyPhoto.close before using it
+* Added: method count_add_to_wishlist to YITH_WCWL class
+* Added: function yith_wcwl_count_add_to_wishlist
+* Tweak: Changed ajax url to "relative"
+* Tweak: Removed yit-common (old plugin-fw) deprecated since 2.0
+* Tweak: Removed deprecated WC functions
+* Tweak: Skipped removed_from_wishlist query arg adding, when external product
+* Tweak: Added transients for wishist counts
+* Tweak: Removed DOM structure dependencies from js for wishlist table handling
+* Tweak: All methods/functions that prints/counts products in wishlist now skip trashed or not visible products
+* Fixed: shortcode callback setting global product in some conditions
+* Fixed: typo in hook yith_wccl_table_after_product_name (now set to yith_wcwl_table_after_product_name)
+* Fixed: notice appearing when wishlist page slug is empty
+
+= 2.0.13 - Released: Dec, 17 - 2015 =
+
+* Added: check over adding_to_cart event data existance in js procedures
+* Added: 'yith_wcwl_added_to_cart_message' filter, to customize added to cart message in wishlist page
+* Added: nofollow to "Add to Wishlist" links, where missing
+* Added: 'yith_wcwl_email_share_subject' filter to customize share by email subject
+* Added: 'yith_wcwl_email_share_body' filter to customize share by email body
+* Added: function "yith_wcwl_count_all_products"
+* Fixed: plugin-fw loading
+
+= 2.0.12 - Released: Oct, 23 - 2015 =
 
 * Added: method to count all products in wishlist
 * Tweak: Added wishlist js handling on 'yith_wcwl_init' triggered on document
 * Tweak: Performance improved with new plugin core 2.0
 * Fixed: occasional fatal error for users with outdated version of plugin-fw on their theme
 
-= 2.0.11 =
+= 2.0.11 - Released: Sept, 21 - 2015 =
 
 * Added: spanish translation (thanks to Arman S.)
 * Added: polish translation (thanks to Roan)
@@ -130,7 +210,7 @@ you should ask theme developers to update custom templates and replace the old t
 * Updated: changed text domain from yit to yith-woocommerce-wishlist
 * Updated: changed all language file for the new text domain
 
-= 2.0.10 =
+= 2.0.10 - Released: Aug, 12 - 2015 =
 
 * Added: Compatibility with WC 2.4.2
 * Tweak: added nonce field to wishlist-view form
@@ -138,7 +218,7 @@ you should ask theme developers to update custom templates and replace the old t
 * Tweak: added check for presence of required function in wishlist script
 * Fixed: admin colorpicker field (for WC 2.4.x compatibility)
 
-= 2.0.9 =
+= 2.0.9 - Released: Jul, 24 - 2015 =
 
 * Added: russian translation
 * Added: WooCommerce class to wishlist view form
@@ -154,7 +234,7 @@ you should ask theme developers to update custom templates and replace the old t
 * Fixed: usage of product_id for add_to_wishlist shortcode, when global $product is not defined
 * Fixed: icon attribute for yith_wcwl_add_to_wishlist shortcode
 
-= 2.0.8 =
+= 2.0.8 - Released: May, 29 - 2015 =
 
 * Added: support WP 4.2.2
 * Added: Persian translation
@@ -164,7 +244,7 @@ you should ask theme developers to update custom templates and replace the old t
 * Updated: Italian translation
 * Removed: login_redirect_url variable
 
-= 2.0.7 =
+= 2.0.7 - Released: Apr, 30 - 2015 =
 
 * Added: WP 4.2.1 support
 * Added: WC 2.3.8 support
@@ -175,7 +255,7 @@ you should ask theme developers to update custom templates and replace the old t
 * Fixed: Escaped add_query_arg() and remove_query_arg()
 * Removed: use of pretty permalinks if WPML enabled
 
-= 2.0.6 =
+= 2.0.6 - Released: Apr, 08 - 2015 =
 
 * Added: system to overwrite wishlist js
 * Added: trailingslashit() to wishlist permalink
@@ -186,7 +266,7 @@ you should ask theme developers to update custom templates and replace the old t
 * Fixed: remove from wishlist for not logged user
 * Fixed: twitter share summary
 
-= 2.0.5 =
+= 2.0.5 - Released: Mar, 19 - 2015 =
 
 * Added: icl_object_id to wishlist page id, to translate pages
 * Tweak: updated rewrite rules, to include child pages as wishlist pages
@@ -194,7 +274,7 @@ you should ask theme developers to update custom templates and replace the old t
 * Tweak: added wishlist table id to .load(), to update only that part of template
 * Fixed: yith_wcwl_locate_template causing 500 Internal Server Error
 
-= 2.0.4 =
+= 2.0.4 - Released: Mar, 04 - 2015 =
 
 * Added: Options for browse wishlist/already in wishlist/product added strings
 * Added: rel nofollow to add to wishlist button
@@ -202,7 +282,7 @@ you should ask theme developers to update custom templates and replace the old t
 * Updated: WPML xml configuration
 * Updated: string revision
 
-= 2.0.3 =
+= 2.0.3 - Released: Feb, 19 - 2015 =
 
 * Tweak: set correct protocol for admin-ajax requests
 * Tweak: used wc core function to set cookie
@@ -210,18 +290,18 @@ you should ask theme developers to update custom templates and replace the old t
 * Fixed: show add to cart column when stock status disabled
 * Fixed: product existing in wishlist
 
-= 2.0.2 =
+= 2.0.2 - Released: Feb, 17 - 2015 =
 
 * Updated: font-awesome library
 * Fixed: option with old font-awesome classes
 
-= 2.0.1 =
+= 2.0.1 - Released: Feb, 13 - 2015 =
 
 * Added: spinner image on loading
 * Added: flush rewrite rules on database upgrade
 * Fixed: wc_add_to_cart_params not defined issue
 
-= 2.0.0 =
+= 2.0.0 - Released: Feb, 12 - 2015 =
 
 * Added: Support to woocommerce 2.3
 * Added: New color options
@@ -232,50 +312,50 @@ you should ask theme developers to update custom templates and replace the old t
 * Updated: Plugin core framework
 
 
-= 1.1.7 =
+= 1.1.7 - Released: Dec, 03 - 2014 =
 
 * Added: Support to WooCommerce Endpoints (@use yit_wcwl_add_to_cart_redirect_url filter)
 * Added: Filter to shortcode html
 * Added: Title to share
 
-= 1.1.6 =
+= 1.1.6 - Released: Set, 16 - 2014 =
 
 * Updated: Plugin Core Framework
 * Updated: Languages file
 * Tweek:   WPML Support Improved
 
-= 1.1.5 =
+= 1.1.5 - Released: Jun, 30 - 2014 =
 
 * Added: Share wishlist by email 
 
-= 1.1.4 =
+= 1.1.4 - Released: Jun, 26 - 2014 =
 
 * Fixed: wrong string for inline js on remove link
 * Fixed: wrong string for inline js on add to cart link
 
-= 1.1.3 =
+= 1.1.3 - Released: Jun, 05 - 2014 =
 
 * Added: Options Tabs Filter
 * Fixed: Various Bugs
 
-= 1.1.2 =
+= 1.1.2 - Released: Mar, 21 - 2014 =
 
 * Fixed: Warnings when Show Stock Status is disabled
 * Fixed: Restored page options on WooCommerce 2.1.x
 
-= 1.1.1 =
+= 1.1.1 - Released: Feb, 26 - 2014 =
 
 * Fixed: Inability to unistall plugin 
 * Fixed: Redirect to cart page from wishlist page
 
-= 1.1.0 =
+= 1.1.0 - Released: Feb, 13 - 2014 =
 
 * Added: Support to WooCommerce 2.1.x
 * Added: Spanish (Mexico) translation by Gabriel Dzul
 * Added: French translation by Virginie Garcin
 * Fixed: Revision Italian Language po/mo files
 
-= 1.0.6 =
+= 1.0.6 - Released: Nov, 18 - 2013 =
 
 * Added: Spanish (Argentina) partial translation by Sebastian Jeremias
 * Added: Portuguese (Brazil) translation by Lincoln Lemos
@@ -285,34 +365,34 @@ you should ask theme developers to update custom templates and replace the old t
 * Fixed: Price shows "Free!" if the product is without price
 * Fixed: DB Table creation on plugin activation
 
-= 1.0.5 =
+= 1.0.5 - Released: 14, Oct - 2013 =
 
 * Added: Shared wishlists can be seens also by not logged in users
 * Added: Support for WPML String translation
 * Updated: German translation by Stephanie Schlieske
 * Fixed: Add to cart button does not appear if the product is out of stock
 
-= 1.0.4 =
+= 1.0.4 - Released: Sept, 04 - 2013 =
 
 * Added: partial Ukrainian translation
 * Added: complete German translation. Thanks to Stephanie Schliesk
 * Added: options to show/hide button add to cart, unit price and stock status in the wishlist page
 * Added: Hebrew language (thanks to Gery Grinvald)
 
-= 1.0.3 =
+= 1.0.3 - Released: Jul, 31 - 2013 =
 
 * Fixed: Minor bugs fixes
 
-= 1.0.2 =
+= 1.0.2 - Released: Jun, 24 - 2013 =
 
 * Fixed: Fatal error to yit_debug with yit themes
 
-= 1.0.1 =
+= 1.0.1 - Released: May, 30 - 2013 =
 
 * Tweak: Optimized images
 * Updated: internal framework
 
-= 1.0.0 =
+= 1.0.0 - Released: May, 23 - 2013 =
 
 * Initial release
 
@@ -325,18 +405,23 @@ If you have suggestions about how to improve YITH WooCommerce Wishlist, you can 
 = Available Languages =
 * Chinese - CHINA
 * Chinese - TAIWAN
+* Danish - DENMARK
+* Dutch - NETHERLANDS
 * English - UNITED KINGDOM (Default)
 * German - GERMANY
-* Spanish - ARGENTINA
-* Spanish - SPAIN
-* Spanish - MEXICO
 * French - FRANCE
 * Hebrew - ISRAEL
 * Italian - ITALY
+* Korean - KOREA
 * Persian - IRAN, ISLAMIC REPUBLIC OF
+* Polish - POLAND
 * Portuguese - BRAZIL
 * Portuguese - PORTUGAL
 * Russian - RUSSIAN FEDERATION
+* Spanish - ARGENTINA
+* Spanish - SPAIN
+* Spanish - MEXICO
+* Swedish - SWEDEN
 * Turkish - TURKEY
 * Ukrainian - UKRAINE
 
@@ -350,12 +435,9 @@ Full documentation is available [here](http://yithemes.com/docs-plugins/yith-woo
 
 == Upgrade notice ==
 
-= 2.0.13 =
+= 2.1.2 - Released: May, 11 - 2017 =
 
-* Added check over adding_to_cart event data existance in js procedures
-* Added 'yith_wcwl_added_to_cart_message' filter, to customize added to cart message in wishlist page
-* Added nofollow to "Add to Wishlist" links, where missing
-* Added 'yith_wcwl_email_share_subject' filter to customize share by email subject
-* Added 'yith_wcwl_email_share_body' filter to customize share by email body
-* Added function "yith_wcwl_count_all_products"
-* Fixed plugin-fw loading
+* Tweak: updated FontAwesome to 4.7.0
+* Fix: possible warning when empty rewrite rules
+* Fix: problem with custom CSS inclusion, when not located in child theme
+* Fix: using current_product instead of global product when retrieving product type (prevents a Fatal error when placing Add to Wishlist outside the loop)

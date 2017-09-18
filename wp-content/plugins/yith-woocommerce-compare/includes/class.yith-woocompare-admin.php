@@ -86,14 +86,16 @@ if ( ! class_exists( 'YITH_Woocompare_Admin' ) ) {
 			add_action( 'admin_init', array( $this, 'register_pointer' ) );
 			add_action( 'admin_init', array( $this, 'default_options'), 99 );
 
-			// add image size
-			YITH_Woocompare_Helper::set_image_size();
-
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_styles_scripts' ), 20 );
 
 			add_action( 'woocommerce_admin_field_woocompare_image_width', array( $this, 'admin_fields_woocompare_image_width' ) );
 			add_action( 'woocommerce_admin_field_woocompare_attributes', array( $this, 'admin_fields_attributes' ), 10, 1 );
-			add_filter( 'woocommerce_admin_settings_sanitize_option_yith_woocompare_fields_attrs', array( $this, 'admin_update_custom_option' ), 10, 3 );
+			if( version_compare( preg_replace( '/-beta-([0-9]+)/', '', WC()->version ), '2.4', '<' ) ) {
+				add_action( 'woocommerce_update_option_woocompare_attributes', array( $this, 'admin_update_custom_option_pre_24' ), 10, 1 );
+			}
+			else {
+				add_filter( 'woocommerce_admin_settings_sanitize_option_yith_woocompare_fields_attrs', array( $this, 'admin_update_custom_option' ), 10, 3 );
+			}
 
 			// YITH WCWL Loaded
 			do_action( 'yith_woocompare_loaded' );
@@ -148,8 +150,8 @@ if ( ! class_exists( 'YITH_Woocompare_Admin' ) ) {
 			$args = array(
 				'create_menu_page' => true,
 				'parent_slug'      => '',
-				'page_title'       => __( 'Compare', 'yith-woocommerce-compare' ),
-				'menu_title'       => __( 'Compare', 'yith-woocommerce-compare' ),
+				'page_title'       => _x( 'Compare', 'Admin Plugin Name', 'yith-woocommerce-compare' ),
+				'menu_title'       => _x( 'Compare', 'Admin Plugin Name', 'yith-woocommerce-compare' ),
 				'capability'       => 'manage_options',
 				'parent'           => '',
 				'parent_page'      => 'yit_plugin_panel',
@@ -233,7 +235,7 @@ if ( ! class_exists( 'YITH_Woocompare_Admin' ) ) {
 				'target'     => '#toplevel_page_yit_plugin_panel',
 				'content'    => sprintf( '<h3> %s </h3> <p> %s </p>',
 					__( 'YITH WooCommerce Compare Activated', 'yith-woocommerce-compare' ),
-					apply_filters( 'yith_woocompare_activated_pointer_content', sprintf( __( 'In the YIT Plugin tab you can find the YITH WooCommerce Compare options. With this menu, you can access to all the settings of our plugins that you have activated. YITH WooCommerce Compare is available in an outstanding PREMIUM version with many new options, <a href="%s">discover it now</a>.', 'yit' ), $this->get_premium_landing_uri() ) )
+					apply_filters( 'yith_woocompare_activated_pointer_content', sprintf( __( 'In the YIT Plugin tab you can find the YITH WooCommerce Compare options. With this menu, you can access to all the settings of our plugins that you have activated. YITH WooCommerce Compare is available in an outstanding PREMIUM version with many new options, <a href="%s">discover it now</a>.', 'yith-woocommerce-compare' ), $this->get_premium_landing_uri() ) )
 				),
 				'position'   => array( 'edge' => 'left', 'align' => 'center' ),
 				'init'       => YITH_WOOCOMPARE_INIT
@@ -245,7 +247,7 @@ if ( ! class_exists( 'YITH_Woocompare_Admin' ) ) {
 				'target'     => '#toplevel_page_yit_plugin_panel',
 				'content'    => sprintf( '<h3> %s </h3> <p> %s </p>',
 					__( 'YITH WooCommerce Compare Updated', 'yith-woocommerce-compare' ),
-					apply_filters( 'yith_woocompare_updated_pointer_content', sprintf( __( 'From now on, you can find all the options of YITH WooCommerce Compare under YIT Plugin -> Compare instead of WooCommerce -> Settings -> Compare, as in the previous version. When one of our plugins is updated, a new voice will be added to this menu. YITH WooCommerce Compare has been updated with new available options, <a href="%s">discover the PREMIUM version.</a>', 'yit' ), $this->get_premium_landing_uri() ) )
+					apply_filters( 'yith_woocompare_updated_pointer_content', sprintf( __( 'From now on, you can find all the options of YITH WooCommerce Compare under YIT Plugin -> Compare instead of WooCommerce -> Settings -> Compare, as in the previous version. When one of our plugins is updated, a new voice will be added to this menu. YITH WooCommerce Compare has been updated with new available options, <a href="%s">discover the PREMIUM version.</a>', 'yith-woocommerce-compare' ), $this->get_premium_landing_uri() ) )
 				),
 				'position'   => array( 'edge' => 'left', 'align' => 'center' ),
 				'init'       => YITH_WOOCOMPARE_INIT
@@ -377,7 +379,6 @@ if ( ! class_exists( 'YITH_Woocompare_Admin' ) ) {
 
 			$width  = WC_Admin_Settings::get_option( $value['id'] . '[width]', $value['default']['width'] );
 			$height = WC_Admin_Settings::get_option( $value['id'] . '[height]', $value['default']['height'] );
-			$crop   = WC_Admin_Settings::get_option( $value['id'] . '[crop]', $value['default']['crop'] );
 			$crop   = WC_Admin_Settings::get_option( $value['id'] . '[crop]' );
 			$crop   = ( $crop == 'on' || $crop == '1' ) ? 1 : 0;
 			$crop   = checked( 1, $crop, false );
@@ -425,6 +426,27 @@ if ( ! class_exists( 'YITH_Woocompare_Admin' ) ) {
 		}
 
 		/**
+		 * Save the admin field: slider
+		 *
+		 * @access public
+		 * @param mixed $value
+		 * @return void
+		 * @since 1.0.0
+		 */
+		public function admin_update_custom_option_pre_24( $value ) {
+
+			$val            = array();
+			$checked_fields = isset( $_POST[ $value['id'] ] ) ? $_POST[ $value['id'] ] : array();
+			$fields         = array_map( 'trim', explode( ',', $_POST[ $value['id'] . '_positions' ] ) );
+
+			foreach ( $fields as $field ) {
+				$val[ $field ] = in_array( $field, $checked_fields );
+			}
+
+			update_option( str_replace( '_attrs', '', $value['id'] ), $val );
+		}
+
+		/**
 		 * Enqueue admin styles and scripts
 		 *
 		 * @access public
@@ -432,13 +454,14 @@ if ( ! class_exists( 'YITH_Woocompare_Admin' ) ) {
 		 * @since 1.0.0
 		 */
 		public function enqueue_styles_scripts() {
-			wp_enqueue_script( 'jquery-ui' );
-			wp_enqueue_script( 'jquery-ui-core' );
-			wp_enqueue_script( 'jquery-ui-mouse' );
-			wp_enqueue_script( 'jquery-ui-slider' );
-			wp_enqueue_script( 'jquery-ui-sortable' );
 
 			if ( isset( $_GET['page'] ) && $_GET['page'] == 'yith_woocompare_panel' ) {
+				wp_enqueue_script( 'jquery-ui' );
+				wp_enqueue_script( 'jquery-ui-core' );
+				wp_enqueue_script( 'jquery-ui-mouse' );
+				wp_enqueue_script( 'jquery-ui-slider' );
+				wp_enqueue_script( 'jquery-ui-sortable' );
+
 				wp_enqueue_style( 'yith_woocompare_admin', YITH_WOOCOMPARE_URL . 'assets/css/admin.css' );
 				wp_enqueue_script( 'yith_woocompare', YITH_WOOCOMPARE_URL . 'assets/js/woocompare-admin.js', array( 'jquery', 'jquery-ui-sortable' ) );
 			}

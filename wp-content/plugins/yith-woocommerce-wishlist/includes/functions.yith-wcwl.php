@@ -11,10 +11,8 @@ if ( !defined( 'YITH_WCWL' ) ) { exit; } // Exit if accessed directly
 
 if( !function_exists( 'yith_wcwl_is_wishlist' ) ){
     /**
-     * Check if current page is wishlist
+     * Check if we're printing wishlist shortcode
      *
-     * @param string $path
-     * @param array $var
      * @return bool
      * @since 2.0.0
      */
@@ -22,6 +20,24 @@ if( !function_exists( 'yith_wcwl_is_wishlist' ) ){
         global $yith_wcwl_is_wishlist;
 
         return $yith_wcwl_is_wishlist;
+    }
+}
+
+if( !function_exists( 'yith_wcwl_is_wishlist_page' ) ){
+    /**
+     * Check if current page is wishlist
+     *
+     * @return bool
+     * @since 2.0.13
+     */
+    function yith_wcwl_is_wishlist_page(){
+        $wishlist_page_id = yith_wcwl_object_id( get_option( 'yith_wcwl_wishlist_page_id' ) );
+
+        if( ! $wishlist_page_id ){
+            return false;
+        }
+
+        return is_page( $wishlist_page_id );
     }
 }
 
@@ -35,17 +51,7 @@ if( !function_exists( 'yith_wcwl_locate_template' ) ) {
      * @since 1.0.0
      */
     function yith_wcwl_locate_template( $path, $var = NULL ){
-        global $woocommerce;
-
-        if( function_exists( 'WC' ) ){
-            $woocommerce_base = WC()->template_path();
-        }
-        elseif( defined( 'WC_TEMPLATE_PATH' ) ){
-            $woocommerce_base = WC_TEMPLATE_PATH;
-        }
-        else{
-            $woocommerce_base = $woocommerce->plugin_path() . '/templates/';
-        }
+        $woocommerce_base = WC()->template_path();
 
     	$template_woocommerce_path =  $woocommerce_base . $path;
         $template_path = '/' . $path;
@@ -77,17 +83,20 @@ if( !function_exists( 'yith_wcwl_get_template' ) ) {
     function yith_wcwl_get_template( $path, $var = null, $return = false ) {
         $located = yith_wcwl_locate_template( $path, $var );      
         
-        if ( $var && is_array( $var ) ) 
-    		extract( $var );
+        if ( $var && is_array( $var ) ) {
+	        extract( $var );
+        }
                                
-        if( $return )
-            { ob_start(); }   
+        if( $return ) {
+        	ob_start();
+        }
                                                                      
         // include file located
         include( $located );
         
-        if( $return )
-            { return ob_get_clean(); }
+        if( $return ) {
+        	return ob_get_clean();
+        }
     }
 }
 
@@ -95,7 +104,7 @@ if( !function_exists( 'yith_wcwl_count_products' ) ) {
     /**
      * Retrieve the number of products in the wishlist.
      *
-     * @param $wishlist_token string Optional wishlist token
+     * @param $wishlist_token string|bool Optional wishlist token
      * 
      * @return int
      * @since 1.0.0
@@ -117,6 +126,20 @@ if( !function_exists( 'yith_wcwl_count_all_products' ) ) {
     }
 }
 
+if( !function_exists( 'yith_wcwl_count_add_to_wishlist' ) ){
+    /**
+     * Count number of times a product was added to users wishlists
+     *
+     * @param $product_id int|bool Product id
+     *
+     * @return int Number of times the product was added to wishlists
+     * @since 2.0.13
+     */
+    function yith_wcwl_count_add_to_wishlist( $product_id = false ){
+        return YITH_WCWL()->count_add_to_wishlist( $product_id );
+    }
+}
+
 if( !function_exists( 'yith_frontend_css_color_picker' ) ) {
     /**
      * Output a colour picker input box.
@@ -134,9 +157,7 @@ if( !function_exists( 'yith_frontend_css_color_picker' ) ) {
      * @return void
      */
     function yith_frontend_css_color_picker( $name, $id, $value, $desc = '' ) {
-    	global $woocommerce;
-
-        $value = ! empty( $value ) ? $value : '#ffffff';
+    	$value = ! empty( $value ) ? $value : '#ffffff';
 
         echo '<div  class="color_box">
                   <table><tr><td>
@@ -154,13 +175,13 @@ if( !function_exists( 'yith_setcookie' ) ) {
      * 
      * @param string $name
      * @param mixed $value
+     * @param int $time
      * @return bool
      * @since 1.0.0
      */
     function yith_setcookie( $name, $value = array(), $time = null ) {
-        $time = $time != null ? $time : time() + 60 * 60 * 24 * 30;
-        
-        //$value = maybe_serialize( stripslashes_deep( $value ) );
+        $time = $time != null ? $time : time() + apply_filters( 'yith_wcwl_cookie_expiration', 60 * 60 * 24 * 30 );
+
         $value = json_encode( stripslashes_deep( $value ) );
         $expiration = apply_filters( 'yith_wcwl_cookie_expiration_time', $time ); // Default 30 days
 
@@ -229,5 +250,46 @@ if( !function_exists( 'yith_wcwl_object_id' ) ){
         else{
             return $id;
         }
+    }
+}
+
+if( !function_exists( 'yith_wcwl_get_hidden_products' ) ){
+    /**
+     * Retrieves a list of hidden products, whatever WC version is running
+     *
+     * WC switched from meta _visibility to product_visibility taxonomy since version 3.0.0,
+     * forcing a split handling (Thank you, WC!)
+     * 
+     * @return array List of hidden product ids
+     * @since 2.1.1
+     */
+    function yith_wcwl_get_hidden_products(){
+        global $wpdb;
+        $hidden_products = array();
+
+        if( version_compare( WC()->version, '3.0.0', '<' ) ){
+            $query = "SELECT p.ID
+                      FROM {$wpdb->posts} AS p
+                      LEFT JOIN {$wpdb->postmeta} AS pm ON p.ID = pm.post_id
+                      WHERE meta_key = %s AND meta_value <> %s";
+            $query_args = array(
+                '_visibility',
+                'visible'
+            );
+        }
+        else{
+            $product_visibility_term_ids = wc_get_product_visibility_term_ids();
+            $query = "SELECT tr.object_id 
+                      FROM {$wpdb->term_relationships} AS tr
+                      LEFT JOIN {$wpdb->term_taxonomy} AS tt USING( term_taxonomy_id ) 
+                      WHERE tt.taxonomy = %s AND tr.term_taxonomy_id = %d";
+            $query_args = array(
+                'product_visibility',
+                $product_visibility_term_ids['exclude-from-catalog'] 
+            );
+        }
+
+        $hidden_products = $wpdb->get_col( $wpdb->prepare( $query, $query_args ) );
+        return $hidden_products;
     }
 }

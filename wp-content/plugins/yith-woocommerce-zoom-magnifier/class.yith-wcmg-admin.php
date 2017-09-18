@@ -53,7 +53,6 @@ if ( ! class_exists( 'YITH_WCMG_Admin' ) ) {
             add_action( 'woocommerce_update_options_yith_wcmg', array( $this, 'update_options' ) );
 
             add_action( 'woocommerce_admin_field_banner', array( $this, 'admin_fields_banner' ) );
-            add_action( 'admin_print_footer_scripts', array( $this, 'admin_fields_image_deps' ) );
 
 	        add_filter( 'woocommerce_catalog_settings', array( $this, 'add_catalog_image_size' ) );
 
@@ -98,56 +97,6 @@ if ( ! class_exists( 'YITH_WCMG_Admin' ) ) {
             $settings[] = $tmp;
             return $settings;
         }
-
-        /**
-         * Create new Woocommerce admin field: image deps
-         *
-         * @access public
-         *
-         * @param array $value
-         *
-         * @return void
-         * @since 1.0.0
-         */
-        public function admin_fields_image_deps( $value ) {
-            global $woocommerce;
-
-            $force = get_option( 'yith_wcmg_force_sizes' ) == 'yes';
-
-            if ( $force ) {
-                $value['desc'] = 'These values ??are automatically calculated based on the values ??of the Single product. If you\'d like to customize yourself the values, please disable the "Forcing Zoom Image sizes" in "Magnifier" tab.';
-            }
-
-            if ( $force && isset( $_GET['page'] ) && isset( $_GET['tab'] ) && ( $_GET['page'] == 'woocommerce_settings' || $_GET['page'] == 'wc-settings' ) && $_GET['tab'] == 'catalog' ): ?>
-                <script>
-                    jQuery(document).ready(function ($) {
-                        $('#woocommerce_magnifier_image-width, #woocommerce_magnifier_image-height, #woocommerce_magnifier_image-crop').attr('disabled', 'disabled');
-
-                        $('#shop_single_image_size-width, #shop_single_image_size-height').on('keyup', function () {
-                            var value = parseInt($(this).val());
-                            var input = (this.id).indexOf('width') >= 0 ? 'width' : 'height';
-
-                            if (!isNaN(value)) {
-                                $('#woocommerce_magnifier_image-' + input).val(value * 2);
-                            }
-                        });
-
-                        $('#shop_single_image_size-crop').on('change', function () {
-                            if ($(this).is(':checked')) {
-                                $('#woocommerce_magnifier_image-crop').attr('checked', 'checked');
-                            } else {
-                                $('#woocommerce_magnifier_image-crop').removeAttr('checked');
-                            }
-                        });
-
-                        $('#mainform').on('submit', function () {
-                            $(':disabled').removeAttr('disabled');
-                        });
-                    });
-                </script>
-            <?php endif;
-        }
-
 
         /**
          * Enqueue admin styles and scripts

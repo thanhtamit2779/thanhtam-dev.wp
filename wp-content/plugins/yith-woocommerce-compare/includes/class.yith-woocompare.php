@@ -40,16 +40,29 @@ if( !class_exists( 'YITH_Woocompare' ) ) {
          * @since 1.0.0
          */
         public function __construct() {
+
             add_action( 'widgets_init', array( $this, 'registerWidgets' ) );
 
 	        // Load Plugin Framework
-	        add_action( 'plugins_loaded', array( $this, 'plugin_fw_loader' ), 15 );
+	        add_action( 'after_setup_theme', array( $this, 'plugin_fw_loader' ), 1 );
 
             if( $this->is_frontend() ) {
+
+                // require frontend class
+                require_once('class.yith-woocompare-frontend.php');
+
                 $this->obj = new YITH_Woocompare_Frontend();
-            } elseif( $this->is_admin() ) {
-                $this->obj = new YITH_Woocompare_Admin();
             }
+            elseif( $this->is_admin() ) {
+
+		        // requires admin classes
+                require_once('class.yith-woocompare-admin.php');
+
+	            $this->obj = new YITH_Woocompare_Admin();
+            }
+
+	        // add image size
+	        YITH_Woocompare_Helper::set_image_size();
 
             return $this->obj;
         }
@@ -60,7 +73,11 @@ if( !class_exists( 'YITH_Woocompare' ) ) {
          */
         public function is_frontend() {
             $is_ajax = ( defined( 'DOING_AJAX' ) && DOING_AJAX );
-            return (bool) ( ! is_admin() || $is_ajax && isset( $_REQUEST['context'] ) && $_REQUEST['context'] == 'frontend' );
+	        $context_check = isset( $_REQUEST['context'] ) && $_REQUEST['context'] == 'frontend';
+	        $actions_to_check = apply_filters( 'yith_woocompare_actions_to_check_frontend', array( 'woof_draw_products' ) );
+	        $action_check = isset( $_REQUEST['action'] ) && in_array( $_REQUEST['action'], $actions_to_check );
+
+            return (bool) ( ! is_admin() || ( $is_ajax && ( $context_check || $action_check ) ) );
         }
 
         /**
@@ -69,7 +86,8 @@ if( !class_exists( 'YITH_Woocompare' ) ) {
          */
         public function is_admin() {
             $is_ajax = ( defined( 'DOING_AJAX' ) && DOING_AJAX );
-            return (bool) ( is_admin() || $is_ajax && isset( $_REQUEST['context'] ) && $_REQUEST['context'] == 'admin' );
+	        $is_admin = ( is_admin() || $is_ajax && isset( $_REQUEST['context'] ) && $_REQUEST['context'] == 'admin' );
+            return apply_filters( 'yith_woocompare_check_is_admin', (bool) $is_admin );
         }
 
 	    /**
@@ -81,9 +99,10 @@ if( !class_exists( 'YITH_Woocompare' ) ) {
 	     * @author Andrea Grillo <andrea.grillo@yithemes.com>
 	     */
 	    public function plugin_fw_loader() {
+
             if ( ! defined( 'YIT_CORE_PLUGIN' ) ) {
                 global $plugin_fw_data;
-                if ( ! empty( $plugin_fw_data ) ) {
+                if( ! empty( $plugin_fw_data ) ){
                     $plugin_fw_file = array_shift( $plugin_fw_data );
                     require_once( $plugin_fw_file );
                 }

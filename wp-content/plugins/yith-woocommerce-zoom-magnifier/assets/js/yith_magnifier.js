@@ -186,7 +186,7 @@
 
         elements: {
             zoom: $('.yith_magnifier_zoom'),
-            zoomImage: $('.yith_magnifier_zoom img'),
+            zoomImage: $('.yith_magnifier_zoom img').first(),
             gallery: $('.yith_magnifier_gallery li a')
         }
     };
@@ -306,9 +306,17 @@
             self.zoomImage = self.options.elements.zoomImage;
 
             //wrap the zoom image with a div
-            if (!self.zoom.parent().hasClass('yith_magnifier_zoom_wrap')) {
-                self.zoom.wrap('<div class="yith_magnifier_zoom_wrap"></div>');
+            var zoom_wrap_css_class = "yith_magnifier_zoom_wrap";
+
+
+			if (self.options.zoom_wrap_additional_css) {
+            	if ( !$('.' + zoom_wrap_css_class).length ) {
+
+					zoom_wrap_css_class += " " + self.options.zoom_wrap_additional_css;
+				}
             }
+
+            self.zoom.wrap('<div class="' + zoom_wrap_css_class + '"></div>');
 
             self.IMG_zoomImage = new Image();
             self.IMG_zoomImage.src = self.zoom.attr('href');
@@ -316,7 +324,7 @@
             self.IMG_smallImage = new Image();
             self.IMG_smallImage.src = self.zoomImage.attr('src');
 
-            if ($.browser.msie && $.browser.version == 8) {
+            if ($.browser && $.browser.msie && $.browser.version == 8) {
                 $(self.IMG_zoomImage).load(function () {
 
                     self._initTrap();

@@ -7,8 +7,9 @@
  * @version 2.0.5
  */
 
-global $wpdb, $woocommerce;
-
+if ( ! defined( 'YITH_WCWL' ) ) {
+	exit;
+} // Exit if accessed directly
 ?>
 <div id="yith-wcwl-messages"></div>
 

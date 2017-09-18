@@ -47,7 +47,9 @@ if( !class_exists( 'YITH_Woocompare_Helper' ) ) {
                 'price' => __( 'Price', 'yith-woocommerce-compare' ),
                 'add-to-cart' => __( 'Add to cart', 'yith-woocommerce-compare' ),
                 'description' => __( 'Description', 'yith-woocommerce-compare' ),
-                'stock' => __( 'Availability', 'yith-woocommerce-compare' )
+                'stock' => __( 'Availability', 'yith-woocommerce-compare' ),
+                'weight'        => __( 'Weight', 'yith-woocommerce-compare' ),
+                'dimensions'    => __( 'Dimensions', 'yith-woocommerce-compare' )
             );
 
 	        if( $with_attr )

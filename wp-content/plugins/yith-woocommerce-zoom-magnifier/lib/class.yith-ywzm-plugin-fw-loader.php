@@ -101,8 +101,12 @@ if ( ! class_exists( 'YITH_YWZM_Plugin_FW_Loader' ) ) {
 		 * @author Andrea Grillo <andrea.grillo@yithemes.com>
 		 */
 		public function plugin_fw_loader() {
-			if ( ! defined( 'YIT' ) || ! defined( 'YIT_CORE_PLUGIN' ) ) {
-				require_once( YITH_YWZM_DIR . 'plugin-fw/yit-plugin.php' );
+			if ( !defined( 'YIT_CORE_PLUGIN' ) ) {
+				global $plugin_fw_data;
+				if ( !empty( $plugin_fw_data ) ) {
+					$plugin_fw_file = array_shift( $plugin_fw_data );
+					require_once( $plugin_fw_file );
+				}
 			}
 		}
 
@@ -278,7 +282,8 @@ if ( ! class_exists( 'YITH_YWZM_Plugin_FW_Loader' ) ) {
 		 */
 		public function register_plugin_for_activation() {
 			if ( ! class_exists( 'YIT_Plugin_Licence' ) ) {
-				require_once 'plugin-fw/lib/yit-plugin-licence.php';
+				require_once YITH_YWZM_DIR . '/plugin-fw/licence/lib/yit-licence.php';
+				require_once YITH_YWZM_DIR . '/plugin-fw/licence/lib/yit-plugin-licence.php';
 			}
 			YIT_Plugin_Licence()->register( YITH_YWZM_INIT, YITH_YWZM_SECRET_KEY, YITH_YWZM_SLUG );
 		}

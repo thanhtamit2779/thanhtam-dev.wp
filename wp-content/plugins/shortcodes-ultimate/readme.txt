@@ -4,7 +4,7 @@ License: GPL
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MMA2VA7JDXWDY
 Tags: shortcode, shortcodes, short code, video, responsive, responsive video, youtube, vimeo, audio, mp3, tab, tabs, button, buttons, jquery, box, boxes, toggle, spoiler, column, columns, services, service, pullquote, list, lists, images, image, links, fancy, fancy link, fancy links, fancy buttons, jquery tabs, accordion, slider, plugin, admin, gallery, bloginfo, list pages, sub pages, navigation, siblings pages, children pages, permalink, permalinks, feed, document, member, members, guests, membership, documents, carousel, rss, touch, icon, icons, trl, right-to-left, multilingual, lang, international
 Requires at least: 3.5
-Tested up to: 4.5
+Tested up to: 4.8
 Stable tag: trunk
 
 Supercharge your WordPress theme with mega pack of shortcodes
@@ -17,9 +17,10 @@ Supercharge your WordPress theme with mega pack of shortcodes
 With this plugin you can easily create tabs, buttons, boxes, different sliders, responsive videos and much, much more. Turn your free theme to premium in just a few clicks. Using Shortcodes Ultimate you can quickly and easily retrieve premium themes features and display it on your site. See screenshots for more information.
 
 = Premium Add-ons =
-* __[Extra Shortcodes](http://gndev.info/shortcodes-ultimate/extra/)__ - 15+ additional shortcodes
-* __[Additional Skins](http://gndev.info/shortcodes-ultimate/skins/)__ - 60+ additional skins for plugin shortcodes
-* __[Shortcode Creator](http://gndev.info/shortcodes-ultimate/maker/)__ - allows you to create your own custom shortcodes
+* [Extra Shortcodes](http://gndev.info/shortcodes-ultimate/extra/) - 15+ additional shortcodes
+* [Additional Skins](http://gndev.info/shortcodes-ultimate/skins/) - 60+ additional skins for plugin shortcodes
+* [Shortcode Creator](http://gndev.info/shortcodes-ultimate/maker/) - allows you to create your own custom shortcodes
+* __[Add-ons Bundle](http://gndev.info/shortcodes-ultimate/add-ons-bundle/)__ - All-in-one, $15 OFF!
 
 = Features =
 * 50+ amazing shortcodes
@@ -34,22 +35,21 @@ With this plugin you can easily create tabs, buttons, boxes, different sliders, 
 * Works with any theme
 * Easily extendable
 
-= Demo video =
-[youtube http://www.youtube.com/watch?v=h5hlJb0mSSY]
+= Never stop learning =
 
-= What people are saying (blog posts/tutorials) =
 * [40+ Reasons Shortcodes Ultimate Is A Must Have Plugin](http://www.the-best-web-hosting-service.com/blog/2014/01/ultimateshortcodesreview/)
 * [Show Me the Shortcode](http://thewpchick.com/show-shortcode/) + Video
 * [Shortcodes Ultimate: Ultimatize your written content](http://wisdmlabs.com/blog/how-to-style-wordpress-themes-with-shortcodes-ultimate/)
-* [Add 40+ New Layout Features To WordPress with Shortcodes Ultimate](http://www.makeuseof.com/tag/add-40-new-layout-features-wordpress-shortcodes-ultimate/)
-* [Обзор плагина Shortcodes Ultimate](http://rad-dom.ru/shortcodes-ultimate/) (Ru)
 * [Shortcodes Ultimate Plugin Review](http://kevindankowebdesign.com/shortcodes-ultimate-plugin-review/)
-* [Shortcodes Ultimate — плагин неограниченных возможностей](http://altacademic.ru/shortcodes-ultimate/) (Ru)
+* [Add 4s0+ New Layout Features To WordPress with Shortcodes Ultimate](http://www.makeuseof.com/tag/add-40-new-layout-features-wordpress-shortcodes-ultimate/)
 * [Shortcodes Ultimate – Free Shortcode Plugin For WordPress](http://www.wordpress-masterclass.com/shortcodes-ultimate-free-shortcode-plugin-for-wordpress/)
-* [Shortcodes Ultimate – Newest Update Broke My Website](http://4spotmarketing.com/shortcodes-ultimate-stopped-working-and-the-update-broke-my-website/)
-* Video: [Shortcodes Ultimate Tutorial](http://www.youtube.com/watch?v=IjmaXz-b55I)
-* Video: [How to use special widget](http://www.youtube.com/watch?v=YU3Zu6C5ZfA)
-* Video: [How to create image gallery](http://www.youtube.com/watch?v=kCWyO2F7jTw)
+* (Video) [Supercharge WordPress With A Mega Pack Of Shortcodes!](https://www.youtube.com/watch?v=h5hlJb0mSSY)
+* (Video) [Shortcodes Ultimate Tutorial](http://www.youtube.com/watch?v=IjmaXz-b55I)
+* (Video) [How to use special widget](http://www.youtube.com/watch?v=YU3Zu6C5ZfA)
+* (Video) [How to create image gallery](http://www.youtube.com/watch?v=kCWyO2F7jTw)
+* (RU) [Обзор плагина Shortcodes Ultimate](http://rad-dom.ru/shortcodes-ultimate/)
+* (RU) [Shortcodes Ultimate — плагин неограниченных возможностей](http://altacademic.ru/shortcodes-ultimate/)
+* (RU) [Шорткоды Wordpress](http://somemoreinfo.ru/shortkody-wordpress-ot-anoxina/)
 
 = Requirements =
 * WordPress 3.5+
@@ -105,10 +105,25 @@ Upgrade normally
 
 == Frequently Asked Questions ==
 
-[Visit support forum](http://wordpress.org/support/plugin/shortcodes-ultimate/)
+[Visit knowledge base](http://gndev.info/kb/)
 
 
 == Changelog ==
+
+= 4.10.2 =
+* Improved: compatibility with PHP7 ([user] and [post] shortcodes)
+* Fixed: [slider] and [custom_gallery] markup (skipped whitespaces among link attributes)
+* Removed: user capability check in [permalink]
+
+= 4.10.1 =
+* Fixed: lightbox javascript
+
+= 4.10.0 =
+* Fixed: security vulnerability at 'Examples' admin page (insecure call of file_get_contents() at inc/core/tools.php:774)
+* Fixed: added access check to permalink shortcode. [Pull request #20](https://github.com/gndev/shortcodes-ultimate/pull/20).
+* Added: PHP7 compatibility. Checked with [php7cc](https://github.com/sstalle/php7cc) and [PHP Compatibility Checker](https://wordpress.org/plugins/php-compatibility-checker/). [Pull request #45](https://github.com/gndev/shortcodes-ultimate/pull/45).
+* Added: https support for Google Maps. [Pull request #40](https://github.com/gndev/shortcodes-ultimate/pull/40).
+* Added: https support for Youtube. [Pull request #39](https://github.com/gndev/shortcodes-ultimate/pull/39).
 
 = 4.9.9 =
 * Fixed: vote popup at plugins page

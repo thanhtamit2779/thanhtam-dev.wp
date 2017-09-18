@@ -22,11 +22,12 @@ $options = array(
 
         array(
             'name' => __( 'Link or Button', 'yith-woocommerce-compare' ),
-            'desc' => __( 'Choose if you want to use a link or a button for the action button.', 'yith-woocommerce-compare' ),
+            'desc_tip' => __( 'Choose if you want to use a link or a button for the comepare actions.', 'yith-woocommerce-compare' ),
             'id'   => 'yith_woocompare_is_button',
             'std'  => 'button',
             'default' => 'button',
             'type' => 'select',
+            'class' => 'wc-enhanced-select',
             'options' => array(
                 'link' => __( 'Link', 'yith-woocommerce-compare' ),
                 'button' => __( 'Button', 'yith-woocommerce-compare' )
@@ -141,4 +142,4 @@ $options = array(
     )
 );
 
-return $options;
+return apply_filters( 'yith_woocompare_general_settings', $options );

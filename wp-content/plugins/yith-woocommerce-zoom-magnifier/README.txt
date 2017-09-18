@@ -1,10 +1,10 @@
 === YITH WooCommerce Zoom Magnifier ===
 
 Contributors: yithemes
-Tags: zoom, magnifier, woocommerce, product image, themes, yit, e-commerce, shop, thumbnail, thumbnail slider, zoom image, carousel, image carousel
+Tags: zoom, magnifier, slider, carousel, woocommerce
 Requires at least: 3.5.1
-Tested up to: 4.4
-Stable tag: 1.2.15
+Tested up to: 4.8.1
+Stable tag: 1.2.30
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -40,14 +40,6 @@ Important: First of all, you have to download and activate WooCommerce plugin, w
 
 YITH WooCommerce Zoom Magnifier will add a new tab called "Zoom Magnifier" in "YIT Plugins" menu item. There, you will find all Yithemes plugins with quick access to plugin setting page.
 
-== Frequently Asked Questions ==
-
-= The size of the Zoom image is not the size I setted. Why? =
-If you enabled the plugin after you uploaded the images of the product you need to [regenerate the thumbnails](http://wordpress.org/extend/plugins/regenerate-thumbnails/ "regenerate the thumbnails") before to use it. Another reason could be that the size setted for the zoom images is greather than the original image size.
-
-= I'm not able to change the sizes of Zoom Image. Why? =
-The size of the Zoom Image is automatically setted. If you want to change these values you just need to untick the option Forcing Zoom Image sizes.
-
 == Screenshots ==
 
 1. The General plugin settings page. You can disable the plugin for mobile devices.
@@ -59,152 +51,61 @@ The size of the Zoom Image is automatically setted. If you want to change these 
 
 == Changelog ==
 
-= Version 1.2.15 - RELEASED: JAN 04, 2016 =
+= Version 1.2.30 - Released: Aug 11, 2017 =
 
-* Fixed: Cannot redeclare yith_ywzm_install_woocommerce_admin_notice() when the plugin is loaded from YITH Essential Kit
+* New: support for WooCommerce 3.1.
+* New: tested up to WordPress 4.8.
+* Update: YITH Plugin Framework.
 
-= Version 1.2.14 - RELEASED: DEC 29, 2015 =
+= Version 1.2.29 - Released: Apr 30, 2017 =
 
-* Added: Compatibility with YIT WooCommerce Featured Audio & Video Content
+* Update: YITH Plugin Framework.
+* Tweak: tested up to WordPress 4.7.4.
+* Tweak: changed plugin tags.
 
-= Version 1.2.13 - RELEASED: DEC 21, 2015 =
+= Version 1.2.28 - Released: Apr 06, 2017 =
 
-* Fixed: multiple wrap of zoom element with the div with class yith_magnifier_zoom_wrap
-* Updated: jquery-ui.css is no more linked as external resource but shipped within the plugin, as wordpress.org asked
+* Fix: Javascript error when a product variation do not have its own image set.
 
-= Version 1.2.12 - RELEASED: OCT 29, 2015 =
+= Version 1.2.27 - Released: Apr 05, 2017 =
 
-* Updated: YITH plugin framework
+* Fix: Variation images not shown properly.
 
-= Version 1.2.11 - RELEASED: OCT 23, 2015 =
+= Version 1.2.26 - Released: Mar 28, 2017 =
 
-* Updated: compatibility with YITH WooCommerce Quick View.
+* Fix: YITH Plugin Framework initialization that prevents the plugin update.
 
-= Version 1.2.10 - RELEASED: SEP 24, 2015 =
+= Version 1.2.25 - Released: Mar 08, 2017 =
 
-* Updated: changed text domain as translate.wordpress.org requisite.
+* Fix:  removed unused class.yith-wcmg.php file
+* Fix:  removed hook 'admin_print_footer_scripts' in class.yith-wcmg-admin.php
 
-= Version 1.2.9 - RELEASED: SEP 04, 2015 =
+= Version 1.2.24 - Released: Mar 06, 2017 =
 
-* Updated: Languages file
-* Fixed: Changed plugin text domain from yit to ywmz
-* Fixed: featured image shown one time on slider.
-* Fixed: div not shown if loading text is empty.
+* New:  Support to WooCommerce 2.7.0-RC1
+* Update: YITH Plugin Framework
 
-= Version 1.2.8 - RELEASED: SEP 01, 2015 =
+= Version 1.2.23 - Released: Jan 16, 2017 =
 
-* Fixed: removed deprecated woocommerce_update_option_X hook.
+* New: WordPress 4.7 ready
 
-= Version 1.2.7 - RELEASED: AUG 27, 2015 =
+= Version 1.2.22 - Released: Nov 08, 2016 =
 
-* Fixed: resolved XSS vulnerability.
+* Updated: Compatibility to WordPress up to 4.6.x
+* Updated: YITH Plugin-fw
 
-= Version 1.2.6 - RELEASED: AUG 12, 2015 =
+= Version 1.2.21 - Released: Aug 09, 2016 =
 
-* Tweak: update YITH Plugin framework.
+* Fixed: Javascript error on property 'msie'
 
-= Version 1.2.5 - RELEASED: JUL 23, 2015 =
+= Version 1.2.20 - Released: Jun 13, 2016 =
 
-* Added: italian language.
+* Added: spanish localization
+* Updated: WooCommerce 2.6 100% compatible
 
-= Version 1.2.4 - RELEASED: JUN 26, 2015 =
+= Version 1.2.19 - Released: May 04, 2016 =
 
-* Added: support to srcset and src-orig attributes.
-
-= Version 1.2.3 - RELEASED: MAY 29, 2015 =
-
-* Added: included jquery-migrate as prerequisite.
-
-= Version 1.2.2 - RELEASED: MAY 22, 2015 =
-
-* Fixed: CSS fix for EssentialGrid conflicts.
-
-= Version 1.2.1 - RELEASED: MAY 04, 2015 =
-
-* Fixed: removed z-index that made the zoom area hiding other elements in certain themes.
-
-= Version 1.2.0 - RELEASED: APR 22, 2015 =
-
-* Fix : security issue (https://make.wordpress.org/plugins/2015/04/20/fixing-add_query_arg-and-remove_query_arg-usage/)
-* Tweak : support up to Wordpress 4.2
-
-= 1.1.8 =
-
-* Fixed: compatibility with some YITHEMES themes.
-
-= 1.1.7 =
-
-* Fixed: Unwanted expand link on product image.
-
-= 1.1.6 =
-
-* Added: the plugin can be disabled on mobile devices.
-
-= 1.1.5 =
-
-* Fixed: multiple wrap
-
-= 1.1.4 =
-
-* Tweak: WooCommerce 2.2. support
-* Fixed: Placeholder in product without featured image
-* Fixed: Slider items number options doesn't work
-
-= 1.1.3 =
-
-* Added: Support to WC 2.2.2
-* Updated: Plugin Core Framework
-
-= 1.1.2 =
-
-* Restored: Image size options on WC 2.1.x
-* Fixed: Items number option on thumb slider 
-* Fixed: Hard crop issue on WC 2.1.x
-
-= 1.1.1 =
-
-* Fixed: Thumbnails slider direction on single product page
-
-= 1.1.0 =
-
-* Added: Support to WooCommerce 2.1.x
-
-= 1.0.8 =
-
-* Added: ability to change the slider programmatically
-
-= 1.0.7 =
-
-* Fixed: zoomed image did not change when select a variation
-
-= 1.0.6 =
-
-* Removed white space from frontend.php
-
-= 1.0.5 =
-
-* Fixed: magnifier override the plugin for featured video
-
-= 1.0.4 =
-
-* Minor bugs fixes
-
-= 1.0.3 =
-
-* Added ability to load the plugin even when WooCommerce is installed in a different folder
-
-= 1.0.2 =
-
-* Fixed fatal error to yit_debug with yit themes
-
-= 1.0.1 =
-
-* Optimized images
-* Updated internal framework
-
-= 1.0.0 =
-
-* Initial release
+* Fixed: missing YITH Plugin FW files
 
 == Suggestions ==
 
@@ -214,7 +115,8 @@ If you have suggestions about how to improve YITH WooCommerce Zoom Magnifier, yo
 
 = Available Languages =
 * English (Default)
-* Italiano
+* Italian
+* Spanish
 
 If you have created your own language pack, or have an update for an existing one, you can send [gettext PO and MO file](http://codex.wordpress.org/Translating_WordPress "Translating WordPress")
 [use](http://yithemes.com/contact/ "Your Inspiration Themes") so we can bundle it into YITH WooCommerce Zoom Magnfier Languages.

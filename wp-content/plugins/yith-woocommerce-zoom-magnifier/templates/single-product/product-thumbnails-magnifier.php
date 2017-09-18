@@ -13,8 +13,7 @@ global $post, $product, $woocommerce;
 
 $enable_slider = get_option('yith_wcmg_enableslider') == 'yes' ? true : false;
 
-$attachment_ids = $product->get_gallery_attachment_ids();
-
+$attachment_ids = version_compare(WC()->version, '3.0.0', '<') ? $product->get_gallery_attachment_ids() : $product->get_gallery_image_ids();
 if ( ! empty( $attachment_ids ) ) array_unshift( $attachment_ids, get_post_thumbnail_id() );
 
 //  make sure attachments ids are unique

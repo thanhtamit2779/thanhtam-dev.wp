@@ -343,10 +343,11 @@ class WYSIJA_help_back extends WYSIJA_help{
         $truelinkhelp .= '<p>'.__('MailPoet Version: ',WYSIJA).'<strong>'.WYSIJA::get_version().'</strong></p>';
 
         $this->menus=array(
-            'campaigns'=>array('title'=>'MailPoet'),
+            'campaigns'=>array('title'=>'MailPoet'. ' <span class="update-plugins"><span class="update-count">1</span></span>'),
             'subscribers'=>array('title'=>__('Subscribers',WYSIJA)), // if the key "subscribers" is changed, please change in the filter "wysija_menus" as well.
             'config'=>array('title'=>__('Settings',WYSIJA)),
-            'premium'=>array('title'=>__('Premium',WYSIJA))
+            'premium'=>array('title'=>__('Premium',WYSIJA)),
+            'mp3'=>array('title'=>__('Try MailPoet 3 Now!',WYSIJA))
         );
         $this->menus = apply_filters('wysija_menus', $this->menus);
         $this->menuHelp = $truelinkhelp;
@@ -354,7 +355,7 @@ class WYSIJA_help_back extends WYSIJA_help{
             $msg=$config->getValue('ignore_msgs');
             if(!isset($msg['queuesendsslow'])){
                 $this->notice(
-                        __('Tired of waiting more than 48h to send your emails?',WYSIJA).' '. str_replace(array('[link]','[/link]'), array('<a href="http://support.mailpoet.com/knowledgebase/how-fast-can-i-send-emails-optimal-sending-configurations-explained/?utm_source=wpadmin&utm_campaign=slowqueue" target="_blank">','</a>'), __('[link]Find out[/link] how you can improve this.',WYSIJA)).
+                        __('Tired of waiting more than 48h to send your emails?',WYSIJA).' '. str_replace(array('[link]','[/link]'), array('<a href="http://docs.mailpoet.com/article/48-wp-cron-batch-emails-sending-frequency" target="_blank">','</a>'), __('[link]Find out[/link] how you can improve this.',WYSIJA)).
                         ' <a class="linkignore queuesendsslow" href="javascript:;">'.__('Hide!',WYSIJA).'</a>');
             }
         }
@@ -408,20 +409,28 @@ class WYSIJA_help_back extends WYSIJA_help{
             if($wysija_installing===true){
                 if($count==0){
                     $parentmenu=$actionFull;
-                    $hookname=add_menu_page($menutemp['title'], $menutemp['subtitle'], $roleformenu, $actionFull , array($this->controller, 'errorInstall'), 'div', $position);
+                    $hookname = add_menu_page(
+                        $menutemp['title'],
+                        $menutemp['subtitle'],
+                        $roleformenu,
+                        $actionFull,
+                        array($this->controller, 'errorInstall'),
+                        WYSIJA_EDITOR_IMG.'menu-icon.png',
+                        $position
+                    );
                 }
             }else{
                 if($count==0){
                     $parentmenu = $actionFull;
                     $hookname = add_menu_page(
-                            $menutemp['title'],
-                            $menutemp['subtitle'],
-                            $roleformenu,
-                            $actionFull ,
-                            array($this->controller, 'render'),
-                            'div',
-                            $position
-                            );
+                        $menutemp['title'],
+                        $menutemp['subtitle'],
+                        $roleformenu,
+                        $actionFull ,
+                        array($this->controller, 'render'),
+                        WYSIJA_EDITOR_IMG.'menu-icon.png',
+                        $position
+                    );
                 }else{
                     $hookname=add_submenu_page($parentmenu,$menutemp['title'], $menutemp['subtitle'], $roleformenu, $actionFull , array($this->controller, 'render'));
                 }

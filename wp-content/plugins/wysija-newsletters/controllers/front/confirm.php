@@ -49,6 +49,7 @@ class WYSIJA_control_front_confirm extends WYSIJA_control_front{
     }
 
     function unsubscribe(){
+        remove_action( 'bp_get_request_unsubscribe', 'bp_email_unsubscribe_handler' );
         $model_config=WYSIJA::get('config','model');
 
         // we need to call the translation otherwise it will not be loaded and translated
@@ -62,7 +63,7 @@ class WYSIJA_control_front_confirm extends WYSIJA_control_front{
 
         $wysija_key = '';
         if(isset( $_GET['wysija-key'] )){
-            $wysija_key = $_GET['wysija-key'];
+            $wysija_key =  filter_var($_GET['wysija-key'], FILTER_SANITIZE_STRING);
         }
         $undo_paramsurl = array(
              'wysija-page' => 1,

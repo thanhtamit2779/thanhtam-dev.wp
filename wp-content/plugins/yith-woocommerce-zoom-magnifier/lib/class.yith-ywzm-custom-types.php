@@ -122,7 +122,7 @@ if (!class_exists('YITH_YWZM_Custom_Types')) {
                 $wc_clean = 'wc_clean';
             }
 
-            update_option($value['id'], woocommerce_clean($_POST[$value['id']]));
+            update_option($value['id'], $wc_clean($_POST[$value['id']]));
         }
 
 

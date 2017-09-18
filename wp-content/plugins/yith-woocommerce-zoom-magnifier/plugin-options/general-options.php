@@ -223,7 +223,7 @@ if ( ! defined( 'YITH_YWZM_PREMIUM' ) ) {
 					'video_description' => __( 'See YITH WooCommerce Zoom Magnifier plugin with full premium features in action', 'yith-woocommerce-zoom-magnifier' ),
 				),
 				'title_second_column'       => __( 'Get Support and Pro Features', 'yith-woocommerce-zoom-magnifier' ),
-				'description_second_column' => __( 'Purchasing the premium version of the plugin, you will take advantage of the advanced features of the product, and you will get one year of free updates and support through our platform available 24h/24.', 'yith-woocommerce-zoom-magnifier' ),
+				'description_second_column' => __( 'By purchasing the premium version of the plugin, you will take advantage of the advanced features of the product, and you will get one year of free updates and support through our platform available 24h/24.', 'yith-woocommerce-zoom-magnifier' ),
 				'button'                    => array(
 					'href'  => YITH_YWZM_Plugin_FW_Loader::get_instance()->get_premium_landing_uri(),
 					'title' => 'Get Support and Pro Features'
