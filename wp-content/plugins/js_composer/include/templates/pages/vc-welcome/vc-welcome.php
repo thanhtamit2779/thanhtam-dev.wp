@@ -6,36 +6,36 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="vc_welcome-tab changelog">
 	<div class="vc_feature-section-teaser">
 		<div>
-			<img class="vc-featured-img" src="<?php echo vc_asset_url( 'vc/vc-welcome/screenshot49.png' ); ?>"/>
+			<img class="vc-featured-img" src="<?php echo vc_asset_url( 'vc/vc-welcome/screenshot.png' ); ?>"/>
 
-			<h3><?php _e( 'Now Faster Than Ever', 'js_composer' ); ?></h3>
+			<h3><?php _e( 'User-Friendly and RTL Compatible', 'js_composer' ); ?></h3>
 
-			<p><?php _e( 'Visual Composer 4.9 offers significant improvements in terms of performance. Detailed code refactor and smart loading of components results in fastest Visual Composer ever with more than 30% performance improvements. Now you can build your WordPress pages even faster and Visual Composer will assist you there.', 'js_composer' ); ?></p>
-			<p><?php _e( 'The most amazing thing is that the more content you have and the more addons you use - the more improvements in performance you will experience.', 'js_composer' ); ?></p>
+			<p><?php _e( 'Enjoy full RTL compatibility of Visual Composer Page Builder with fully automatic text and grid adjustments.', 'js_composer' ); ?></p>
+			<p><?php _e( 'Receive even more control over access rights and create your own elements with a single click. Access completely new elements with completely new Visual Composer Page Builder.', 'js_composer' ); ?></p>
 		</div>
 	</div>
 
 	<div class="vc_welcome-feature feature-section vc_row">
 		<div class="vc_col-xs-4">
 			<img class="vc-img-center"
-			     src="<?php echo vc_asset_url( 'vc/vc-welcome/01_49.png' ); ?>"/>
-			<h4><?php _e( 'Equal Height', 'js_composer' ); ?></h4>
+			     src="<?php echo vc_asset_url( 'vc/vc-welcome/01.png' ); ?>"/>
+			<h4><?php _e( 'RTL Compatible', 'js_composer' ); ?></h4>
 
-			<p><?php _e( 'Control column height by setting all columns within row to be equal height. Create new modern layouts you have dreamed of.', 'js_composer' ); ?></p>
+			<p><?php _e( 'Develop RTL friendly layout with Visual Composer Page Builder automatically.', 'js_composer' ); ?></p>
 		</div>
 		<div class="vc_col-xs-4">
 			<img class="vc-img-center"
-			     src="<?php echo vc_asset_url( 'vc/vc-welcome/02_49.png' ); ?>"/>
-			<h4><?php _e( 'Column Gap', 'js_composer' ); ?></h4>
+			     src="<?php echo vc_asset_url( 'vc/vc-welcome/02.png' ); ?>"/>
+			<h4><?php _e( 'My Elements', 'js_composer' ); ?></h4>
 
-			<p><?php _e( 'Set gaps between columns or merge columns together by setting gap to 0. Use with familiar grid gap control mechanism.', 'js_composer' ); ?></p>
+			<p><?php _e( 'Create elements like a presets and add them to the Add Element window for quick access.', 'js_composer' ); ?></p>
 		</div>
 		<div class="vc_col-xs-4">
 			<img class="vc-img-center"
-			     src="<?php echo vc_asset_url( 'vc/vc-welcome/03_49.png' ); ?>"/>
-			<h4><?php _e( 'Column, Content Position', 'js_composer' ); ?></h4>
+			     src="<?php echo vc_asset_url( 'vc/vc-welcome/03.png' ); ?>"/>
+			<h4><?php _e( 'Column Parallax', 'js_composer' ); ?></h4>
 
-			<p><?php _e( 'Control vertical alignment of columns and content within columns by setting it to top, middle or bottom.', 'js_composer' ); ?></p>
+			<p><?php _e( 'Apply parallax effect to a single column and create even better layouts.', 'js_composer' ); ?></p>
 		</div>
 	</div>
 

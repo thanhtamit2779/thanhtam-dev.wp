@@ -15,6 +15,7 @@ class WPBMap {
 	 * @var array
 	 */
 	protected static $sc = array();
+	protected static $removedElements = array();
 
 	/**
 	 * @var bool
@@ -92,8 +93,8 @@ class WPBMap {
 
 		// @todo fix_roles? what is this and why it is inside class-wpb-map?
 		if ( null !== self::$settings ) {
-			if ( function_exists( 'get_currentuserinfo' ) ) {
-				get_currentuserinfo();
+			if ( function_exists( 'wp_get_current_user' ) ) {
+				wp_get_current_user();
 				/** @var Vc_Settings $settings - get use group access rules */
 				if ( ! empty( $current_user->roles ) ) {
 					self::$user_role = $current_user->roles[0];
@@ -144,6 +145,9 @@ class WPBMap {
 	 * @return bool
 	 */
 	public static function map( $tag, $attributes ) {
+		if ( in_array( $tag, self::$removedElements ) ) {
+			return false;
+		}
 		if ( ! self::$is_init ) {
 			if ( empty( $attributes['name'] ) ) {
 				trigger_error( sprintf( __( 'Wrong name for shortcode:%s. Name required', 'js_composer' ), $tag ) );
@@ -192,6 +196,9 @@ class WPBMap {
 	 * @return bool
 	 */
 	public static function leanMap( $tag, $settings_function = null, $settings_file = null, $attributes = array() ) {
+		if ( in_array( $tag, self::$removedElements ) ) {
+			return false;
+		}
 		self::$sc[ $tag ] = $attributes;
 		self::$sc[ $tag ]['base'] = $tag;
 		if ( is_string( $settings_file ) ) {
@@ -357,8 +364,7 @@ class WPBMap {
 	 */
 	public static function getShortCode( $tag ) {
 		if ( isset( self::$sc[ $tag ] ) && is_array( self::$sc[ $tag ] ) ) {
-			self::setElementSettings( $tag );
-			$shortcode = self::$sc[ $tag ];
+			$shortcode = self::setElementSettings( $tag );
 		} else {
 			$shortcode = null;
 		}
@@ -447,7 +453,8 @@ class WPBMap {
 		if ( isset( self::$sc[ $name ], self::$sc[ $name ]['params'] ) && is_array( self::$sc[ $name ]['params'] ) ) {
 			foreach ( self::$sc[ $name ]['params'] as $index => $param ) {
 				if ( $param['param_name'] == $attribute_name ) {
-					array_splice( self::$sc[ $name ]['params'], $index, 1 );
+					unset( self::$sc[ $name ]['params'][ $index ] );
+					self::$sc[ $name ]['params'] = array_merge( self::$sc[ $name ]['params'] ); // fix indexes
 
 					return true;
 				}
@@ -520,6 +527,7 @@ class WPBMap {
 				if ( $param['param_name'] == $attribute['param_name'] ) {
 					$replaced = true;
 					self::$sc[ $name ]['params'][ $index ] = $attribute;
+					break;
 				}
 			}
 			if ( false === $replaced ) {
@@ -566,6 +574,7 @@ class WPBMap {
 				if ( $param['param_name'] == $attribute['param_name'] ) {
 					$replaced = true;
 					self::$sc[ $name ]['params'][ $index ] = array_merge( $param, $attribute );
+					break;
 				}
 			}
 
@@ -589,12 +598,11 @@ class WPBMap {
 	 * @return bool
 	 */
 	public static function dropShortcode( $name ) {
+		self::$removedElements[] = $name;
 		if ( ! isset( self::$init_elements[ $name ] ) ) {
 			vc_mapper()->addElementActivity( $name, 'drop_shortcode', array(
 				'name' => $name,
 			) );
-
-			return false;
 		}
 		unset( self::$sc[ $name ] );
 		visual_composer()->removeShortCode( $name );
@@ -650,6 +658,9 @@ class WPBMap {
 				self::modify( $name, $key, $value );
 			}
 		} else {
+			if ( is_array( $value ) ) {
+				$value = array_merge( $value ); // fix indexes
+			}
 			self::$sc[ $name ][ $setting_name ] = $value;
 			visual_composer()->updateShortcodeSetting( $name, $setting_name, $value );
 		}
@@ -672,7 +683,7 @@ class WPBMap {
 	}
 
 	/**
-	 * Sorting method for WPBMap::generateUserData method. Called by usort php function.
+	 * Sorting method for WPBMap::generateUserData method. Called by uasort php function.
 	 * @deprecated - use Vc_Sort::sortByKey since 4.4
 	 * @static
 	 *
@@ -718,6 +729,7 @@ class WPBMap {
 						if ( false === array_search( $categories, $categories_list ) ) {
 							$categories_list[] = $categories;
 						}
+						/** @var string $categories */
 						$values['_category_ids'][] = md5( $categories );
 					}
 				}
@@ -738,11 +750,14 @@ class WPBMap {
 	 *
 	 * @param $tag
 	 *
-	 * @return bool
+	 * @return array|null
 	 */
 	public static function setElementSettings( $tag ) {
-		if ( ! isset( self::$sc[ $tag ] ) ) {
-			return false;
+		if ( ! isset( self::$sc[ $tag ] ) || in_array( $tag, self::$removedElements ) ) {
+			return null;
+		}
+		if ( isset( self::$init_elements[ $tag ] ) && self::$init_elements[ $tag ] ) {
+			return self::$sc[ $tag ];
 		}
 		$settings = self::$sc[ $tag ];
 		if ( isset( $settings['__vc_settings_function'] ) ) {
@@ -753,6 +768,8 @@ class WPBMap {
 		self::$sc[ $tag ]['base'] = $tag;
 		self::$init_elements[ $tag ] = true;
 		vc_mapper()->callElementActivities( $tag );
+
+		return self::$sc[ $tag ];
 	}
 
 	/**
@@ -762,7 +779,7 @@ class WPBMap {
 	 */
 	public static function addAllMappedShortcodes() {
 		foreach ( self::$sc as $tag => $settings ) {
-			if ( ! shortcode_exists( $tag ) ) {
+			if ( ! in_array( $tag, self::$removedElements ) && ! shortcode_exists( $tag ) ) {
 				add_shortcode( $tag, 'vc_do_shortcode' );
 			}
 		}
