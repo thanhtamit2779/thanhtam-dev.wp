@@ -9,63 +9,6 @@
 /** WordPress Administration Bootstrap */
 require_once( dirname( __FILE__ ) . '/admin.php' );
 
-
-// CẬP NHẬT PROFILE
-function edit_usermeta_field($user_id) {
-	$meta = $_POST['meta'];
-	if(empty($meta)) return FALSE;
-
-	if ( current_user_can('edit_user', $user_id) ) {
-		foreach($meta as $meta_key => $meta_value) {
-			update_user_meta($user_id, $meta_key, $meta_value);
-		}
-	}
-}
-add_action('show_user_profile', 'edit_usermeta_field');
-add_action('edit_user_profile_update', 'edit_usermeta_field');
-add_action('personal_options_update', 'edit_usermeta_field');
-
-// HIỂN THỊ THÔNG TIN
-function display_usermeta_field($user) {
-	?>
-		<h2>Thông tin bổ sung</h2>
-		<table class="form-table">
-		
-		<!-- CÔNG TY -->
-		<tr>
-			<th>
-				<label for="usermeta_company"><?php _e('Company'); ?></label>
-			</th>
-			<td>
-				<input type="text" name="meta[usermeta_company]" id="usermeta_company" value="<?php echo esc_attr( get_the_author_meta( 'usermeta_company', $user->ID ) ); ?>" class="regular-text" />
-			</td>
-		</tr>
-
-		<!-- CITY -->
-		<tr>
-			<th>
-				<label for="usermeta_city"><?php _e('City'); ?></label>
-			</th>
-			<td>
-				<input type="text" name="meta[usermeta_city]" id="usermeta_city" value="<?php echo esc_attr( get_the_author_meta( 'usermeta_city', $user->ID ) ); ?>" class="regular-text" />
-			</td>
-		</tr>
-
-		<!-- COUNTRY -->
-		<tr>
-			<th>
-				<label for="usermeta_country"><?php _e('Country'); ?></label>
-			</th>
-			<td>
-				<input type="text" name="meta[usermeta_country]" id="usermeta_country" value="<?php echo esc_attr( get_the_author_meta( 'usermeta_country', $user->ID ) ); ?>" class="regular-text" />
-			</td>
-		</tr>
-		</table>
-	<?php
-	}
-	add_action('show_user_profile', 'display_usermeta_field');
-	add_action('edit_user_profile', 'display_usermeta_field');
-
 wp_reset_vars( array( 'action', 'user_id', 'wp_http_referer' ) );
 
 $user_id = (int) $user_id;
@@ -246,7 +189,7 @@ include(ABSPATH . 'wp-admin/admin-header.php');
 	<p><strong><?php _e('User updated.') ?></strong></p>
 	<?php endif; ?>
 	<?php if ( $wp_http_referer && false === strpos( $wp_http_referer, 'user-new.php' ) && ! IS_PROFILE_PAGE ) : ?>
-	<p><a href="<?php echo esc_url( $wp_http_referer ); ?>"><?php _e('&larr; Back to Users'); ?></a></p>
+	<p><a href="<?php echo esc_url( wp_validate_redirect( esc_url_raw( $wp_http_referer ), self_admin_url( 'users.php' ) ) ); ?>"><?php _e('&larr; Back to Users'); ?></a></p>
 	<?php endif; ?>
 </div>
 <?php endif; ?>

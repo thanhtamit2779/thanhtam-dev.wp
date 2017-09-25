@@ -6,52 +6,8 @@
  * @subpackage Administration
  */
 
-function display_usermeta_field() { 
-		$meta				= $_POST['meta'] ;
-		$usermeta_company 	= isset( $meta['usermeta_company'] ) ? wp_unslash( $meta['usermeta_company'] ) : '';
-		$usermeta_city 	  	= isset( $meta['usermeta_city'] ) ? wp_unslash( $meta['usermeta_city'] ) : '';
-		$usermeta_country 	= isset( $meta['usermeta_country'] ) ? wp_unslash( $meta['usermeta_country'] ) : '';
-	?>
-	<h2>Thông tin bổ sung</h2>
-	<table class="form-table">
-		<tbody>
-		
-			<!-- Tên công ty -->
-			<tr class="form-field form-required">
-				<th scope="row"><label for="user_login"><?php _e('Company'); ?> <span class="description"><?php _e('(required)'); ?></span></label></th>
-				<td><input name="meta[usermeta_company]" type="text" id="user_login" value="<?php echo esc_attr( $usermeta_company ); ?>" aria-required="true" autocapitalize="none" autocorrect="off" maxlength="60" /></td>
-			</tr>
-
-			<!-- Thành phố -->
-			<tr class="form-field form-required">
-				<th scope="row"><label for="usermeta_city"><?php _e('City'); ?> <span class="description"><?php _e('(required)'); ?></span></label></th>
-				<td><input name="meta[usermeta_city]" type="text" id="usermeta_city" value="<?php echo esc_attr( $usermeta_city ); ?>" aria-required="true" autocapitalize="none" autocorrect="off" maxlength="60" /></td>
-			</tr>
-
-			<!-- Quốc gia -->
-			<tr class="form-field form-required">
-				<th scope="row"><label for="usermeta_country"><?php _e('Country'); ?> <span class="description"><?php _e('(required)'); ?></span></label></th>
-				<td><input name="meta[usermeta_country]" type="text" id="usermeta_country" value="<?php echo esc_attr( $usermeta_country ); ?>" aria-required="true" autocapitalize="none" autocorrect="off" maxlength="60" /></td>
-			</tr>
-
-		</tbody>
-	</table>		
-<?php } 
 /** WordPress Administration Bootstrap */
 require_once( dirname( __FILE__ ) . '/admin.php' );
-
-add_action( 'user_register', 'add_usermeta_field', 10, 1 );
-add_action('edit_user_profile', 'add_usermeta_field'); 
-function add_usermeta_field( $user_id ) {
-	$meta = $_POST['meta'];
-	if(empty($meta)) return FALSE;
-
-	if ( current_user_can('create_users', $user_id) ) {
-		foreach($meta as $meta_key => $meta_value) {
-			add_user_meta( $user_id, $meta_key, $meta_value);
-		}
-	}
-}
 
 if ( is_multisite() ) {
 	if ( ! current_user_can( 'create_users' ) && ! current_user_can( 'promote_users' ) ) {
@@ -443,8 +399,6 @@ $new_user_role = $creating && isset( $_POST['role'] ) ? wp_unslash( $_POST['role
 $new_user_send_notification = $creating && ! isset( $_POST['send_user_notification'] ) ? false : true;
 $new_user_ignore_pass = $creating && isset( $_POST['noconfirmation'] ) ? wp_unslash( $_POST['noconfirmation'] ) : '';
 
-
-
 ?>
 <table class="form-table">
 	<tr class="form-field form-required">
@@ -538,7 +492,7 @@ $new_user_ignore_pass = $creating && isset( $_POST['noconfirmation'] ) ? wp_unsl
 	</tr>
 	<?php } ?>
 </table>
-<?php display_usermeta_field(); ?>
+
 <?php
 /** This action is documented in wp-admin/user-new.php */
 do_action( 'user_new_form', 'add-new-user' );
