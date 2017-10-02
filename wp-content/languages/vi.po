@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.8.x package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-09-13 04:19:14+0000\n"
+"PO-Revision-Date: 2017-09-29 15:58:17+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -5324,7 +5324,7 @@ msgstr "Trong khi bạn có thể cắt hình ảnh theo ý thích của bạn s
 #. translators: %s: header width in pixels
 #: wp-includes/customize/class-wp-customize-header-image-control.php:184
 msgid "While you can crop images to your liking after clicking <strong>Add new image</strong>, your theme recommends a header width of %s pixels."
-msgstr "Trong khi bạn có thể cắt hình ảnh theo ý thích của bạn sau khi nhấp chuột vào <strong>Thêm hình ảnh mới </strong>, giao diện của bạn gợi ý chiều rộng cho đầu trang là <strong>%s</strong> pixels."
+msgstr "Trong khi bạn có thể cắt hình ảnh theo ý thích của bạn sau khi nhấp chuột vào <strong>Thêm hình ảnh mới</strong>, giao diện của bạn khuyên chiều rộng cho ảnh đầu trang là %s pixel."
 
 #: wp-includes/update.php:130 wp-includes/update.php:322
 #: wp-includes/update.php:500
