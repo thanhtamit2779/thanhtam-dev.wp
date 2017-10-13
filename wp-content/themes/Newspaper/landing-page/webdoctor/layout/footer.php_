@@ -1,0 +1,177 @@
+<div class="hotline_footer">
+   <div class="footer_fix"><span class="footer_line">hotline: </span> <a href="tel:0873004488" title="08.7300.4488"><span class="hotline_phone">08.7300.4488</span></a></div>
+   <div id="footer_fix_1"><span><a href="" title="chat với tôi">chat với tôi</a></span></div>
+</div>
+<div class="scrol-to-top">
+   <div class="scrollup">
+      <i class="fa fa-angle-double-up"></i>
+   </div>
+</div>
+<?php    
+   // Kiểm tra có file cache hay chưa
+   if( wp_cache_get('list_support') == false) { // chưa có file cache
+       // Kết nối dữ liệu
+       $get_list_support                = unserialize(file_get_contents("http://erp.webdoctor.vn/api/staffs/listSales"));
+       
+       $set_list_support['data']        = $get_list_support;
+       $set_list_support['time_save']   = time();
+       $set_list_support['time_cache']  = 3600;   
+
+       wp_cache_set('list_support', serialize($set_list_support), '', $set_list_support['time_cache']);
+   } 
+   $api_list_support = wp_cache_get('list_support');
+?>
+<footer id="dslc-content" class="site-footer dslc-content dslc-clearfix">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-6 col-sm-6 online_footer_left">
+            <div class="footer_hotline"><a href="tel:0873004488" onclick="ga('send', 'event', 'Phone', 'Click', 'hotline', 1);fbq('track', 'CompleteRegistration')" title="Hotline:(08) 7300. 4488 (24/7)">Hotline:(08) 7300. 4488 (24/7)</a></div>
+            <ul class="row hotline_multi">
+               <?php 
+                  $list_supports  = unserialize($api_list_support);
+                  if(!empty($list_supports)) { ?>
+                       <?php foreach ($list_supports['data'] as $list_support) { ?>
+                         <li class="col-sm-6 col-md-6 col-xs-12">
+                            <img  src="<?php echo $list_support['imgBase'];?>" width="50" height="50" title="<?php echo $list_support['display_name']?>" alt="<?php echo sanitize_title(remove_accents($list_support['display_name'])) ?>">
+                            <div class="le-right" ><span><?php echo $list_support['display_name']?></span><br>
+                               <a class="sale-phone-number" href="tel:<?php echo $list_support['phone']?>" onclick="ga('send', 'event', 'Phone', 'Click', 'Mr.Hai', 1);fbq('track', 'CompleteRegistration')" title=""><?php echo $list_support['phone'];?></a>
+                            </div>
+                         </li>
+                       <?php } ?>
+               <?php } ?>                    
+            </ul>
+         </div>
+         <div class="col-md-6 col-sm-6 online_footer_right">
+            <div class="dslc-html-module-content">
+               <div class="phone_contact">
+                  <div class="congvietnam">CÔNG TY TNHH QUẢNG CÁO CỔNG VIỆT NAM</div>
+                  <div class=""><i class="fa fa-home" aria-hidden="true"></i>
+                     Văn phòng: Tầng 10, Tòa nhà Bitexco Nam Long, 63A Võ Văn Tần, P.6, Q.3, TP.HCM
+                  </div>
+                  <div class=""><i class="fa fa-university" aria-hidden="true"></i>
+                     Mã số thuế: 0313547231
+                  </div>
+                  <div>Website: <a href="http://webdoctor.vn" title="www.webdoctor.vn">www.webdoctor.vn</a> | <a href="http://sccom.vn" title="www.sccom.vn">www.sccom.vn</a> | <a href="www.adsplus.vn" title="www.adsplus.vn">www.adsplus.vn </a></div>
+               </div>
+               <div class="box_ft">
+                  <div class=""><i class="fa fa-phone" aria-hidden="true"></i>
+                     Hotline Trung tâm Kinh doanh: (08) 7300. 4488
+                  </div>
+                  <div class="">
+                     <i class="fa fa-envelope" aria-hidden="true"></i>
+                     Email Trung tâm Kinh doanh : sales@webdoctor.vn
+                  </div>
+               </div>
+               <div class="box_ft">
+                  <div class="" >
+                     <i class="fa fa-university" aria-hidden="true"></i>
+                     Tài khoản Techcombank: 19129832121014 - Chi nhánh Hồ Chí Minh
+                  </div>
+                  <div class=""><i class="fa fa-university" aria-hidden="true"></i>
+                     Tài khoản Tiên Phong Bank: 66852888001 - Chi nhánh Bến Thành
+                  </div>
+               </div>
+            </div>
+            <div class="dslc-html-module-content">
+               <h1 >TỪ KHÓA TÌM KIẾM NHIỀU NHẤT</h1>
+               <div class="search_desc">
+                  <a href="/" title="Quản trị website">Quản trị website</a>,<a href="http://webdoctor.vn/bang-gia-dich-vu/" title="báo giá chăm sóc webiste">báo giá chăm sóc webiste</a>,<a href="http://webdoctor.vn/quang-cao-google-adword-va-seo-giai-phap-nao-hieu-qua/" title="Quảng cáo google adsword">Quảng cáo google adsword</a>,<a href="https://webdoctor.vn/seo/" title="seo là gì">seo là gì</a>, 
+                  <p><a href="/thiet-ke-website" title="Thiết Kế Website">Thiết Kế Website</a></p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</footer>
+<script type="text/javascript">
+   jQuery(function(){    
+    var salePhoneNumbers = jQuery('.sale-phone-number');
+    jQuery.each(salePhoneNumbers,function(i,e){
+   
+        var numbers = e.text.replace(/\D/g, '');
+        var firstDelimiter = numbers.length-4;
+        var secondDelimiter = numbers.length-7;
+   
+        var el = jQuery(e);
+   
+        el.text('');
+        for (i = numbers.length - 1; i >= 0; i--) 
+        {
+         if(i == firstDelimiter || i == secondDelimiter)
+         {
+          el.text(numbers[i] + '.' + el.text());
+          continue;
+         }      
+         el.text(numbers[i] + el.text());
+        }
+    });
+   })
+</script>
+<script type="text/javascript">
+   $( document ).ready(function() {
+       	$('#btn-formt-submit').on('click', function() {
+       		$('#contact_form form').submit();
+       	});
+       	
+       	$('.product_detail .service-overlay_a ul').addClass('product service-overlay'); 
+        $('ul.service-overlay li:last-child').addClass('final');  
+    	add_span_page_speed('ul li.final');
+   });
+   function add_span_page_speed(source) {
+     var element = $(source);
+     var pattern = /\s(\d{1,3}\/100)$/;
+     $.each(element, function (key, value) {
+         var str             = value.innerHTML;    
+         if(pattern.test(str)) {
+            var resultPattern   = pattern.exec(str);
+            if(resultPattern.length > 0) {
+               result          = str.replace(resultPattern[1], '<span>' + resultPattern[1] + '</span>');
+               $(this).html(result);
+          }          
+         }
+     });
+     return;
+   } 
+   
+    $(document).ready(function() {    
+       // Tim kiem
+       $(".btnFilter").click(function(){
+     	  $('#formSearch').submit();
+       });
+    });
+    
+</script> 
+
+<!-- <a href="#top" title="Scroll to top" id="scroll-top-link" aria-hidden="true" data-av_icon="" data-av_iconfont="entypo-fontello" class="avia_pop_class"><span class="avia_hidden_link_text">Scroll to top</span></a> -->
+<script src="<?php bloginfo('template_directory'); ?>/landing-page/js/bootstrap.min.js"></script>
+<script src="<?php bloginfo('template_directory'); ?>/landing-page/slick/slick.js"></script>
+<script src="<?php bloginfo('template_directory'); ?>/landing-page/js/jquery.validate.min.js"></script>
+<script src="<?php bloginfo('template_directory'); ?>/landing-page/js/additional-methods.min.js"></script>
+<script src="<?php bloginfo('template_directory'); ?>/landing-page/js/bootstrap-carousel.js"></script>
+<!-- <script src="<?php bloginfo('template_directory'); ?>/landing-page/js/jquery.validate.min.js"></script> -->
+<script src="<?php bloginfo('template_directory'); ?>/landing-page/js/jquery.serializeObject.min.js"></script>
+<script src="<?php bloginfo('template_directory'); ?>/landing-page/js/myscript.js"></script>
+<script src="<?php bloginfo('template_directory'); ?>/landing-page/navaprakashspecialtimer/jquery.countdown.min.js"></script>
+<script src="<?php bloginfo('template_directory'); ?>/landing-page/wow/wow.min.js"></script>
+<script type="text/javascript">
+
+    wow = new WOW(
+            {
+               boxClass:     'wow',      // default
+               animateClass: 'animated', // default
+               offset:       0,          // default
+               mobile:       false,       // default
+               live:         true        // default
+            }
+          )
+    wow.init();
+
+    $(document).ready(function(){
+        jQuery('.timer-grid').each(function(){
+            var countTime=jQuery(this).attr('data-time');
+            jQuery('#clockdiv').countdown(countTime,function(event){jQuery(this).html('<div class="col-md-3 col-xs-3 circle"><h3 class="days">' +event.strftime('%D')+ '</h3><p class="date"> ngày</p></div><div class="col-md-3 col-xs-3 circle"><h3 class="hours">' + event.strftime('%H') + '</h3><p class="date"> giờ</p></div><div class="col-md-3 col-xs-3 circle"><h3 class="minutes">' + event.strftime('%M') + '</h3><p class="date">  phút</p></div><div class="col-md-3 col-xs-3 circle"><h3 class="seconds">' + event.strftime('%S') + '</h3><p class="date"> giây</p></div>');});
+        });
+    });
+</script>
+</body>
+</html>
