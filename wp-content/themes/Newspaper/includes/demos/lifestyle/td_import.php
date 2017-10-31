@@ -773,75 +773,112 @@ td_demo_content::add_post(array(
 ));
 //------------------------------------------------------------------------------------------------------
 td_demo_content::add_post(array(
+    'title' => 'Apollo Astronauts Harmed by Deep Space Radiation',
+    'file' => td_global::$get_template_directory . '/includes/demos/lifestyle/pages/post_default.txt',
+    'categories_id_array' => array($demo_cat_12_id),
+    'featured_image_td_id' => 'td_pic_12'
+));
+td_demo_content::add_post(array(
+    'title' => 'He Speaks 11 Languages – 7 Tricks To Learn Any Language',
+    'file' => td_global::$get_template_directory . '/includes/demos/lifestyle/pages/post_default.txt',
+    'categories_id_array' => array($demo_cat_12_id),
+    'featured_image_td_id' => 'td_pic_1'
+));
+td_demo_content::add_post(array(
+    'title' => 'Say Goodbye To Snoring, Say Hello to Sleep',
+    'file' => td_global::$get_template_directory . '/includes/demos/lifestyle/pages/post_default.txt',
+    'categories_id_array' => array($demo_cat_12_id),
+    'featured_image_td_id' => 'td_pic_2'
+));
+td_demo_content::add_post(array(
+    'title' => 'How America Can Stop Wasting $161B of Food a Year',
+    'file' => td_global::$get_template_directory . '/includes/demos/lifestyle/pages/post_default.txt',
+    'categories_id_array' => array($demo_cat_12_id),
+    'featured_image_td_id' => 'td_pic_3'
+));
+td_demo_content::add_post(array(
+    'title' => 'Facebook Gives Emerging Markets Free Sales Platform',
+    'file' => td_global::$get_template_directory . '/includes/demos/lifestyle/pages/post_default.txt',
+    'categories_id_array' => array($demo_cat_12_id),
+    'featured_image_td_id' => 'td_pic_4'
+));
+td_demo_content::add_post(array(
+    'title' => 'The Top 5 Biggest Filatropists in the World',
+    'file' => td_global::$get_template_directory . '/includes/demos/lifestyle/pages/post_default.txt',
+    'categories_id_array' => array($demo_cat_12_id),
+    'featured_image_td_id' => 'td_pic_5'
+));
+//------------------------------------------------------------------------------------------------------
+td_demo_content::add_post(array(
     'title' => 'Swimming the Crystal Waters of the Blue Lagoon',
     'file' => td_global::$get_template_directory . '/includes/demos/lifestyle/pages/post_default.txt',
-    'categories_id_array' => array($demo_cat_6_id),
+    'categories_id_array' => array($demo_cat_13_id),
     'featured_image_td_id' => 'td_pic_6'
 ));
 td_demo_content::add_post(array(
     'title' => 'Mauritius: Five Star Luxury and Wildlife Encounters',
     'file' => td_global::$get_template_directory . '/includes/demos/lifestyle/pages/post_default.txt',
-    'categories_id_array' => array($demo_cat_6_id),
+    'categories_id_array' => array($demo_cat_13_id),
     'featured_image_td_id' => 'td_pic_7'
 ));
 td_demo_content::add_post(array(
     'title' => 'Discovering Sydney’s Must-See Attractions',
     'file' => td_global::$get_template_directory . '/includes/demos/lifestyle/pages/post_default.txt',
-    'categories_id_array' => array($demo_cat_6_id),
+    'categories_id_array' => array($demo_cat_13_id),
     'featured_image_td_id' => 'td_pic_8'
 ));
 td_demo_content::add_post(array(
     'title' => 'Get Lost in Italy and Get Ready for Adventure!',
     'file' => td_global::$get_template_directory . '/includes/demos/lifestyle/pages/post_default.txt',
-    'categories_id_array' => array($demo_cat_6_id),
+    'categories_id_array' => array($demo_cat_13_id),
     'featured_image_td_id' => 'td_pic_9'
 ));
 td_demo_content::add_post(array(
     'title' => 'Egypt: Exploring the Reefs of the Red Sea',
     'file' => td_global::$get_template_directory . '/includes/demos/lifestyle/pages/post_default.txt',
-    'categories_id_array' => array($demo_cat_6_id),
+    'categories_id_array' => array($demo_cat_13_id),
     'featured_image_td_id' => 'td_pic_10'
 ));
 td_demo_content::add_post(array(
     'title' => 'How to Travel in Style: Finding a Perfect Flight',
     'file' => td_global::$get_template_directory . '/includes/demos/lifestyle/pages/post_default.txt',
-    'categories_id_array' => array($demo_cat_6_id),
+    'categories_id_array' => array($demo_cat_13_id),
     'featured_image_td_id' => 'td_pic_11'
 ));
 //------------------------------------------------------------------------------------------------------
 td_demo_content::add_post(array(
     'title' => 'The 5 Most Incredible Body Transformations',
     'file' => td_global::$get_template_directory . '/includes/demos/lifestyle/pages/post_default.txt',
-    'categories_id_array' => array($demo_cat_3_id),
+    'categories_id_array' => array($demo_cat_14_id),
     'featured_image_td_id' => 'td_pic_12'
 ));
 td_demo_content::add_post(array(
     'title' => 'Best Upcoming Horror Movies 2016 – 2017 Trailers',
     'file' => td_global::$get_template_directory . '/includes/demos/lifestyle/pages/post_default.txt',
-    'categories_id_array' => array($demo_cat_3_id),
+    'categories_id_array' => array($demo_cat_14_id),
     'featured_image_td_id' => 'td_pic_1'
 ));
 td_demo_content::add_post(array(
     'title' => 'Top 10 Incredible Technologies You Can Use',
     'file' => td_global::$get_template_directory . '/includes/demos/lifestyle/pages/post_default.txt',
-    'categories_id_array' => array($demo_cat_3_id),
+    'categories_id_array' => array($demo_cat_14_id),
     'featured_image_td_id' => 'td_pic_2'
 ));
 td_demo_content::add_post(array(
     'title' => 'Watch Really Funny Animals Do Crazy Things',
     'file' => td_global::$get_template_directory . '/includes/demos/lifestyle/pages/post_default.txt',
-    'categories_id_array' => array($demo_cat_3_id),
+    'categories_id_array' => array($demo_cat_14_id),
     'featured_image_td_id' => 'td_pic_3'
 ));
 td_demo_content::add_post(array(
     'title' => 'Witness Technological History in the Making',
     'file' => td_global::$get_template_directory . '/includes/demos/lifestyle/pages/post_default.txt',
-    'categories_id_array' => array($demo_cat_3_id),
+    'categories_id_array' => array($demo_cat_14_id),
     'featured_image_td_id' => 'td_pic_4'
 ));
 td_demo_content::add_post(array(
     'title' => 'The 5 Most Influential People In The World',
     'file' => td_global::$get_template_directory . '/includes/demos/lifestyle/pages/post_default.txt',
-    'categories_id_array' => array($demo_cat_3_id),
+    'categories_id_array' => array($demo_cat_14_id),
     'featured_image_td_id' => 'td_pic_5'
 ));

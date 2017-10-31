@@ -65,13 +65,13 @@ if (!function_exists('woocommerce_pagination')) {
 
 
 // Number of product per page 8
-add_filter('loop_shop_per_page', create_function('$cols', 'return 4;'));
+add_filter('loop_shop_per_page', create_function('$cols', 'return 24;'));
 
 if (!function_exists('woocommerce_output_related_products')) {
 	// Number of related products
 	function woocommerce_output_related_products() {
 		woocommerce_related_products(array(
-			'posts_per_page' => 4,
+			'posts_per_page' => 12,
 			'columns' => 4,
 			'orderby' => 'rand',
 		)); // Display 4 products in rows of 1
@@ -156,7 +156,3 @@ if (TD_DEBUG_LIVE_THEME_STYLE) {
 	    }
 
 }
-
-//td_demo_state::update_state("art_creek", 'full');
-
-//print_r(td_global::$all_theme_panels_list);

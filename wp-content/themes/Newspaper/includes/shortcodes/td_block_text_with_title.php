@@ -23,40 +23,24 @@ class td_block_text_with_title extends td_block {
 			$content = $atts[ 'content' ];
 		}
 
-	    $buffy = '';
+        $buffy = '';
         $buffy .= '<div class="' . $this->get_block_classes() . '" ' . $this->get_block_html_atts() . '>';
 
 		    //get the block js
 		    $buffy .= $this->get_block_css();
 
-            // block title wrap
-            $buffy .= '<div class="td-block-title-wrap">';
-                $buffy .= $this->get_block_title();
-                $buffy .= $this->get_pull_down_filter(); //get the sub category filter for this block
-            $buffy .= '</div>';
-
+            $buffy .= $this->get_block_title();
             $buffy .= '<div class="td_mod_wrap">';
-//                //only run the filter if we have visual composer
-//	            if ( ! ( td_util::tdc_is_live_editor_iframe() || td_util::tdc_is_live_editor_ajax() ) ) {
-//	                if (function_exists('wpb_js_remove_wpautop')) {
-//			            $buffy .= wpb_js_remove_wpautop( $content );
-//		            } else {
-//			            $buffy .= do_shortcode( shortcode_unautop( $content ) );
-//		            }
-//	            } else {
-//		            $buffy .= $content;   //no visual composer
-//	            }
-
-	    // As vc does
-		$content = wpautop( preg_replace( '/<\/?p\>/', "\n", $content ) . "\n" );
-
-		if ( ! ( td_util::tdc_is_live_editor_iframe() || td_util::tdc_is_live_editor_ajax() ) ) {
-            $content = do_shortcode( shortcode_unautop( $content ) );
-        }
-
-	    $buffy .= $content;
-
-
+                //only run the filter if we have visual composer
+	            if ( ! ( td_util::tdc_is_live_editor_iframe() || td_util::tdc_is_live_editor_ajax() ) ) {
+	                if (function_exists('wpb_js_remove_wpautop')) {
+			            $buffy .= wpb_js_remove_wpautop( $content );
+		            } else {
+			            $buffy .= do_shortcode( shortcode_unautop( $content ) );
+		            }
+	            } else {
+		            $buffy .= $content;   //no visual composer
+	            }
 	    $buffy .= '</div>';
         $buffy .= '</div>';
 

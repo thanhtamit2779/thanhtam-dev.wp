@@ -48,7 +48,7 @@ global $td_translation_map;
                         ?>
                     <p>By clicking the button you authorize us (tagDiv) to share your translation with other users of the theme. Thank you for your trust and contribution and we will do our best to give back.</p>
 
-                    <a id="send_translation" class="td-big-button" href="" onclick="td_translation.send_translation('<?php echo TD_THEME_NAME ?>', '<?php echo TD_THEME_VERSION ?>', '<?php echo td_util::get_option_('td_cake_status') ?>'); return false;">Send translation or correction</a>
+                    <a id="send_translation" class="td-big-button" href="" onclick="td_translation.send_translation('<?php echo TD_THEME_NAME ?>', '<?php echo TD_THEME_VERSION ?>', '<?php echo td_util::get_option('td_cake_status') ?>'); return false;">Send translation or correction</a>
 
                     <p id="thanks_send_translation" style="display: none">Thank you!</p>
                 </div>

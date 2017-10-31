@@ -47,7 +47,7 @@ class td_global_blocks {
     /**
      * map all the blocks in the pagebuilder
      */
-    static function td_vc_map_all() {
+    static function wpb_map_all() {
         //print_r(td_block_api::get_all()); die;
 
         foreach (td_api_block::get_all() as $block_settings) {

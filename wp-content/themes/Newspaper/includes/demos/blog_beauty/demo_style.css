@@ -157,12 +157,20 @@
   color: #777;
   border-color: #aaa;
 }
-.td-blog-beauty .td_block_template_14 .td-block-title {
+.td-blog-beauty .td-main-content-wrap .block-title {
+  border-color: #000;
+}
+.td-blog-beauty .td-main-content-wrap .block-title span {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: block;
+  text-align: center;
   text-transform: uppercase;
   font-size: 11px;
   letter-spacing: 1px;
   padding: 10px 12px 7px 12px;
   font-weight: 600;
+  background-color: #000;
 }
 .td-blog-beauty .td-subcat-filter {
   display: none;

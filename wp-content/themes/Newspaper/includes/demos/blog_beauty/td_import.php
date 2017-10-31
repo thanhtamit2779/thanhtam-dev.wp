@@ -101,8 +101,7 @@ td_demo_widgets::add_widget_to_sidebar('default', 'td_block_9_widget',
         'custom_title' => 'Latest Posts',
         'limit' => '5',
         'header_color' => '',
-        'ajax_pagination' => "next_prev",
-        'block_template_id' => 'td_block_template_14'
+        'ajax_pagination' => "next_prev"
     )
 );
 
@@ -110,8 +109,7 @@ td_demo_widgets::add_widget_to_sidebar('default', 'td_block_popular_categories_w
     array (
         'custom_title' => 'Popular Categories',
         'limit' => '6',
-        'header_color' => '',
-        'block_template_id' => 'td_block_template_14'
+        'header_color' => ''
     )
 );
 

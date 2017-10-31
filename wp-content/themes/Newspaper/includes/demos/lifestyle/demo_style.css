@@ -37,29 +37,12 @@ Lifestyle demo
     margin-bottom: 0;
   }
 }
-.td-lifestyle .td-header-style-1 .td-header-menu-wrap:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background-color: #000;
-  opacity: .08;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity='8')";
-  filter: alpha(opacity=8);
+.td-lifestyle .td-header-style-1 .td-header-gradient:before {
+  display: none;
 }
-.td-lifestyle .td-header-style-1 .td-header-menu-wrap:after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 1px;
-  background-color: #000;
-  opacity: .08;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity='8')";
-  filter: alpha(opacity=8);
+.td-lifestyle .td-header-style-1 .td-header-menu-wrap {
+  border-bottom: 1px solid #eeeeee;
+  border-top: 1px solid #eeeeee;
 }
 .td-lifestyle .td-header-style-1 .sf-menu > li > a:after {
   background-color: transparent;

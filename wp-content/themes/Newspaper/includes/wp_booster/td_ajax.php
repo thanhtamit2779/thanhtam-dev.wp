@@ -927,50 +927,6 @@ class td_ajax {
         die(json_encode($buffy));
     }
 
-
-    /**
-     * AJAX call
-     * @return json encoded array
-     */
-    static function on_ajax_db_check() {
-        //return buffer
-        $buffy = array(
-            'db_is_set' => false,
-            'db_time' => 0
-        );
-
-        $current_date = date('U');
-
-        if (TD_DEPLOY_MODE == 'dev') {
-            $delay = 40;
-        } else {
-            $delay = 604800;
-        }
-
-        $dbks = array_keys(td_util::$e_keys);
-        $dbk = td_handle::get_var($dbks[1]);
-
-        if (td_util::get_option($dbk) == 2) {
-            $buffy['db_is_set'] = true;
-        };
-
-        $dbk_tp = td_util::get_option($dbk . 'tp');
-
-        if (!empty($dbk_tp)) {
-            if ($delay + $dbk_tp > $current_date) {
-                $buffy['db_time'] = ($delay + $dbk_tp) - $current_date;
-            }
-        } else {
-            td_util::update_option($dbk . 'tp', $current_date);
-        }
-
-        if (TD_DEPLOY_MODE == 'dev') {
-            $buffy['db_is_set'] = true;
-        }
-
-        die(json_encode($buffy));
-    }
-
 }
 
 

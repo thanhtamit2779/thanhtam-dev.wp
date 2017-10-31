@@ -527,6 +527,9 @@ class td_tokenizer {
         );
     }
 
+
+
+
     private function is_title_open($token) {
         $this->log_step(__FUNCTION__, $token);
         $matches = array();
@@ -786,19 +789,9 @@ class td_tokenizer {
 
     private function get_image_link_from_token($token) {
         $matches = array();
-
-        if ( strpos($token, '</figcaption>') !== false) {
-            preg_match('/<figure(.*)href="([^\\"]+)(.*)<figcaption/', $token, $matches);
-            if (!empty($matches[2])) {
-                return $matches[2];
-            } else {
-                return '';
-            }
-        }
-
-        preg_match('/href="([^\\"]+)"/', $token, $matches);
-        if (!empty($matches[1])) {
-            return $matches[1];
+        preg_match('/<figure(.*)href="([^\\"]+)(.*)<figcaption/', $token, $matches);
+        if (!empty($matches[2])) {
+            return $matches[2];
         } else {
             return '';
         }

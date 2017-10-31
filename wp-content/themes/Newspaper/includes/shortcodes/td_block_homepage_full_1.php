@@ -92,8 +92,6 @@ class td_block_homepage_full_1 extends td_block {
 
 				var tdHomepageFullItem = new tdHomepageFull.item();
 
-				tdHomepageFullItem.theme_name = '<?php echo TD_THEME_NAME ?>';
-
 				tdHomepageFullItem.postId = '<?php echo $post->ID ?>';
 				tdHomepageFullItem.blockUid = '<?php echo $this->block_uid ?>';
 				tdHomepageFullItem.postFeaturedImage = '<?php echo $td_post_featured_image ?>';

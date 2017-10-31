@@ -10,6 +10,7 @@
     <?php
     wp_head(); /** we hook up in wp_booster @see td_wp_booster_functions::hook_wp_head */
     ?>
+
 </head>
 
 <body <?php body_class() ?> itemscope="itemscope" itemtype="<?php echo td_global::$http_or_https?>://schema.org/WebPage">

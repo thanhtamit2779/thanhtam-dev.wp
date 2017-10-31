@@ -15,8 +15,6 @@ var tdConfirm;
 
         _isInitialized: false,
 
-        mediaUploadLoaded: false, //set in td_wp_booster_functions.php
-
         _$content: undefined,
         _$confirmYes: undefined,
         _$confirmNo: undefined,
@@ -80,7 +78,7 @@ var tdConfirm;
             tdConfirm._$confirmNo.unbind();
             tdConfirm._$confirmNo.remove();
 
-            // Change Yes to OK
+            //change Yes to OK
             tdConfirm._$confirmYes.html('Ok');
 
             //Yes callback
@@ -91,9 +89,7 @@ var tdConfirm;
                 });
             } else {
                 tdConfirm._$confirmYes.click( function() {
-                    tdConfirm._$confirmYes.off('click');
                     callbackYes.apply(objectContext);
-                    return true;
                 });
             }
 
@@ -101,46 +97,17 @@ var tdConfirm;
 
             tb_show( caption, url );
 
-            // Remove close on overlay container click
-            jQuery("#TB_overlay").off('click');
-
             var $TBWindow = jQuery( '#TB_window' );
 
-            // Remove close button
-            $TBWindow.find('#TB_closeWindowButton').remove();
-
-            //fix for post/page edit areas
-            if (tdConfirm.mediaUploadLoaded === true) {
-                tdConfirm.fixPosition();
-                jQuery(window).resize(function(){ tdConfirm.fixPosition(); });
-            }
-
             $TBWindow.addClass( 'td-thickbox' );
+
+            $TBWindow.find('.tb-close-icon').hide();
 
             if (tdConfirm._$infoContent.height() > 400) {
                 $TBWindow.addClass( 'td-thickbox-fixed' );
             }
 
             tdConfirm._$body.removeClass( 'td-thickbox-loading' );
-        },
-
-
-        /**
-         * fix window position
-         * used when media-upload.js is loaded
-         */
-        fixPosition: function() {
-            var $TBWindow = jQuery( '#TB_window' ),
-                isIE6 = typeof document.body.style.maxHeight === "undefined";
-
-            $TBWindow.css({marginLeft: '-' + parseInt((TB_WIDTH / 2),10) + 'px', width: TB_WIDTH + 'px'});
-            if ( ! isIE6 ) { // take away IE6
-                $TBWindow.css({marginTop: + parseInt((TB_HEIGHT / 2),10) + 'px'});
-            }
-
-            //display on top of other modals
-            $TBWindow.css('z-index', '170001');
-            jQuery("#TB_overlay").css('z-index', '170000');
         },
 
 

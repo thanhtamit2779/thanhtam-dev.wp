@@ -48,7 +48,7 @@ td_after_theme_is_activated();
 function td_check_install_plugins() {
 
 	// Temporary available only for 'ionMag' or 'Newspaper'
-	if ( TD_DEPLOY_MODE == 'dev' || TD_DEPLOY_MODE == 'demo') {
+	if ( TD_THEME_NAME === 'Newsmag' || TD_DEPLOY_MODE == 'dev' || TD_DEPLOY_MODE == 'demo') {
 		return;
 	}
 

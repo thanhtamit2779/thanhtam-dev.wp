@@ -202,7 +202,6 @@ $td_homepage_id = td_demo_content::add_page(array(
     'file' => td_global::$get_template_directory . '/includes/demos/photography/pages/homepage.txt',
     'template' => 'page-pagebuilder-latest.php',   // the page template full file name with .php
     'td_layout' => '',
-    'limit' => 9,
     'sidebar_position' => 'no_sidebar',
     'homepage' => true
 ));

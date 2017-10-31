@@ -13,7 +13,7 @@ if (empty($ad_spot_id)) {
 $ad_fields = td_api_ad::get_key( $ad_spot_id, 'fields' );
 
 $ad_field_code_title = 'YOUR AD CODE';
-$ad_field_code_description = 'Paste your ad code here. Google AdSense will be made responsive automatically.';
+$ad_field_code_description = 'Paste your ad code here. Google adsense will be made responsive automatically.';
 
 // ad_field_notice - if is present => it is shown
 // all other fields - (if is present and not 'false') or it is not preset => it is shown
@@ -192,7 +192,7 @@ if (!isset($ad_fields['ad_field_advantage_usage']) || (isset($ad_fields['ad_fiel
 					echo $ad_fields['ad_field_advantage_usage'];
 				} else {
 					//echo 'If you leave the AdSense size boxes on Auto, the theme will automatically resize the <strong>google ads</strong>. For more info follow this <a href="http://forum.tagdiv.com/header-ad/" target="_blank">link</a>';
-					echo 'If you leave the AdSense size boxes on Auto, the theme will automatically resize the <strong>Google Ads</strong>.';
+					echo 'If you leave the AdSense size boxes on Auto, the theme will automatically resize the <strong>google ads</strong>.';
 				}
 				?>
 			</p>

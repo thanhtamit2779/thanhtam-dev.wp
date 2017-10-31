@@ -31,19 +31,6 @@ if(td_util::get_option('tds_footer_social') != 'no') {
 	$td_social_enabled = 'td-pb-span9';
 }
 
-if (!empty($td_footer_retina_logo)) {
-    // retina logo width of the normal logo
-    $retina_footer_logo_id = attachment_url_to_postid($td_footer_logo);
-
-    $retina_footer_logo_width = '';
-    if ($retina_footer_logo_id !== 0) {
-        $img_properties = wp_get_attachment_image_src($retina_footer_logo_id, 'full');
-        if ($img_properties !== false && !empty($img_properties[1])) {
-            $retina_footer_logo_width = $img_properties[1];
-        }
-    }
-}
-
 $buffy = '';
 
 // column 1 logo
@@ -52,13 +39,13 @@ $buffy .= '<div class="td-pb-span3"><aside class="footer-logo-wrap">';
         if (empty($td_footer_retina_logo)) { // if don't have a retina footer logo load the normal logo
             $buffy .= '<a href="' . esc_url(home_url( '/' )) . '"><img src="' . $td_footer_logo . '" alt="' . $td_footer_logo_alt . '" title="' . $td_footer_logo_title . '"/></a>';
         } else {
-            $buffy .= '<a href="' . esc_url(home_url( '/' )) . '"><img class="td-retina-data" src="' . $td_footer_logo . '" data-retina="' . esc_attr($td_footer_retina_logo) . '" alt="' . $td_footer_logo_alt . '" title="' . $td_footer_logo_title . '" width="' . esc_attr($retina_footer_logo_width) . '" /></a>';
+            $buffy .= '<a href="' . esc_url(home_url( '/' )) . '"><img class="td-retina-data" src="' . $td_footer_logo . '" data-retina="' . esc_attr($td_footer_retina_logo) . '" alt="' . $td_footer_logo_alt . '" title="' . $td_footer_logo_title . '"/></a>';
         }
     } else { // if you don't have a footer logo load the top logo
         if (empty($td_top_retina_logo)) {
             $buffy .= '<a href="' . esc_url(home_url( '/' )) . '"><img src="' . $td_top_logo . '" alt="' . $td_logo_alt . '" title="' . $td_logo_title . '"/></a>';
         } else {
-            $buffy .= '<a href="' . esc_url(home_url( '/' )) . '"><img class="td-retina-data" src="' . $td_top_logo . '" data-retina="' . esc_attr($td_top_retina_logo) . '" alt="' . $td_logo_alt . '" title="' . $td_logo_title . '" width="' . esc_attr($retina_footer_logo_width) . '" /></a>';
+            $buffy .= '<a href="' . esc_url(home_url( '/' )) . '"><img class="td-retina-data" src="' . $td_top_logo . '" data-retina="' . esc_attr($td_top_retina_logo) . '" alt="' . $td_logo_alt . '" title="' . $td_logo_title . '"/></a>';
         }
     }
 

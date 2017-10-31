@@ -351,6 +351,9 @@ a.td-tooltip {
 .ionmag_page_td_theme_panel #wpcontent {
   background: url('../images/panel/bg/bg-red.jpg');
 }
+.ionmag_page_td_theme_panel .td-box-weather {
+  display: none;
+}
 .ionmag_page_td_theme_panel .td_panel_box_default_post_template_site_wide .td-box-description {
   float: none;
   width: auto;
@@ -1051,11 +1054,9 @@ a.td-tooltip {
   display: none;
   position: absolute;
   top: 40px;
-  left: 0;
+  left: 0px;
   background-color: #FFFFFF;
   width: 291px;
-  max-height: 350px;
-  overflow: auto;
   z-index: 999;
   /*999 - overlay-ul de thickbox comes with 1050 */
   border-left: 1px solid #e6e6e6;
@@ -1087,7 +1088,7 @@ a.td-tooltip {
   position: relative;
   width: 10px;
   height: 10px;
-  left: 5px;
+  left: 15px;
   top: 1px;
   background-color: #0000C3;
   cursor: pointer;
@@ -1603,12 +1604,6 @@ title one row controls
 .td-box-content .td-box-row:last-child {
   height: 400px !important;
 }
-.td-box-content #td_panel_reset_settings .td-reset-theme-settings {
-  height: auto !important;
-}
-.td-box-content #td_panel_export_demo_settings .td-demo-export-settings {
-  height: auto !important;
-}
 .td-box-row-end .td-box-description_text {
   padding-bottom: 15px;
 }
@@ -1764,7 +1759,7 @@ title one row controls
   margin-right: 6px;
 }
 /*  ----------------------------------------------------------------------------
-    style analytics
+    style analitycs
 */
 #td-panel-analytics .td-box-full {
   padding-bottom: 8px !important;
@@ -2101,13 +2096,6 @@ title one row controls
 }
 .td_panel_box_force_full_width .td-box-content {
   padding-bottom: 17px;
-}
-#td-panel-footer .td_panel_box_footer_settings .td-small-wrapper-o-separator {
-  margin-bottom: 16px;
-  margin-right: 10px;
-}
-#td-panel-footer .td_panel_box_footer_settings .td-small-wrapper-o-separator:nth-child(6n) {
-  margin-right: 0;
 }
 /*  ----------------------------------------------------------------------------
     pagebuilder

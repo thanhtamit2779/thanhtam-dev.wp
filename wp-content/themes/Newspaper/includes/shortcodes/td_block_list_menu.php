@@ -21,6 +21,11 @@ class td_block_list_menu extends td_block {
 				'menu_id' => ''
 			), $atts);
 
+		// For tagDiv composer add a placeholder element
+		if ((td_util::tdc_is_live_editor_iframe() || td_util::tdc_is_live_editor_ajax()) && empty($this->atts['menu_id'])) {
+			return  '<div class="td_block_wrap td_block_list_menu" ' . $this->get_block_html_atts() . '><div class="tdc-placeholder-title"></div></div>';
+		}
+
 		$buffy = ''; //output buffer
 
 
@@ -35,23 +40,11 @@ class td_block_list_menu extends td_block {
 		// block title wrap
 		$buffy .= '<div class="td-block-title-wrap">';
 			$buffy .= $this->get_block_title(); //get the block title
-			$buffy .= $this->get_pull_down_filter(); //get the sub category filter for this block
 		$buffy .= '</div>';
-
-		// For tagDiv composer add a placeholder element
-		if (empty($this->atts['menu_id'])) {
-			$buffy .= '<div id=' . $this->block_uid . ' class="td_block_inner">';
-			$buffy .= td_util::get_block_error('List Menu', 'Render failed - please select a menu' );
-			$buffy .= '</div>';
-
-			$buffy .= '</div> <!-- ./block -->';
-
-			return $buffy;
-		}
 
 		$buffy .= '<div id=' . $this->block_uid . ' class="td_block_inner">';
 
-		$buffy .= $this->inner($this->atts['menu_id']);  //inner content of the block
+		$buffy .= $this->inner(wp_get_nav_menu_items($this->atts['menu_id']));  //inner content of the block
 		$buffy .= '</div>';
 
 		//get the ajax pagination for this block
@@ -60,23 +53,20 @@ class td_block_list_menu extends td_block {
 		return $buffy;
 	}
 
-	function inner($menu_id, $td_column_number = '') {
+	function inner($posts, $td_column_number = '') {
 		$buffy = '';
 
 		$td_block_layout = new td_block_layout();
-		if (!empty($menu_id)) {
+		if (!empty($posts)) {
+			$buffy .= '<ul>';
 
-			ob_start();
+			_wp_menu_item_classes_by_context( $posts );
 
-			$td_menu_instance = td_menu::get_instance();
-			remove_filter( 'wp_nav_menu_objects', array($td_menu_instance, 'hook_wp_nav_menu_objects') );
+			foreach ($posts as $post) {
+				$buffy .= '<li class="' . join( ' ', $post->classes ) . '"><a href="' . $post->url . '">' . $post->title . '</a></li>';
+			}
 
-			wp_nav_menu( array( 'menu' => $menu_id ) );
-
-			add_filter( 'wp_nav_menu_objects', array($td_menu_instance, 'hook_wp_nav_menu_objects'),  10, 2 );
-
-			$buffy .= ob_get_clean();
-
+			$buffy .= '</ul>';
 		}
 		$buffy .= $td_block_layout->close_all_tags();
 		return $buffy;

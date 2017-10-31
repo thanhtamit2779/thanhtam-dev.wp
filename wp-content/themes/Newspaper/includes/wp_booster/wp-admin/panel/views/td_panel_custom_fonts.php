@@ -7,7 +7,7 @@
 <!-- info text -->
 <div class="td-box-row">
 	<div class="td-box-description td-box-full">
-		<p><?php echo TD_THEME_NAME ?> supports custom fonts files, Typekit Fonts and Google Fonts. Please refresh the main panel to see the fonts after you add them here!</p>
+		<p><?php echo TD_THEME_NAME ?> supports custom fonts files, typekit fonts and google fonts. Please refresh the main panel to see the fonts after you add them here!</p>
 		<p><a href="http://forum.tagdiv.com/using-custom-fonts/" target="_blank">Read more</a> about the font system</p>
 	</div>
 </div>
@@ -24,7 +24,7 @@
 		<p>To use custom font files:</p>
 
 		<ul>
-			<li>Add the link to the font file in .woff format, and the font-face name in the Custom Font Files section and click save settings.</li>
+			<li>Add the link to the font file in .woff format, and the font-face name  in the Custom Font Files section and click save settings.</li>
 			<li>You can convert your font files from any format into .woff format using <a href="http://www.fontsquirrel.com/tools/webfont-generator">fontsquirrel</a> (free tool)</li>
 			<li>Once a font file url and a font family name are added, the font family will appear in the dropdown and it can be selected</li>
 		</ul>
@@ -234,7 +234,7 @@
 <!-- info text -->
 <div class="td-box-row">
 	<div class="td-box-description td-box-full">
-		<p>You can select from here what character subsets will be loaded for each Google Font. The character subset will be loaded only if the font supports the specific glyphs. Try to enable only the subsets that you use because the site will load slower with each additional subset.</p>
+		<p>You can select from here what character subsets will be loaded for each google font. The character subset will be loaded only if the font supports the specific glyphs. Try to enable only the subsets that you use because the site will load slower with each additional subset.</p>
 
 		<p><strong>Notice: </strong> Please note that if a client browser supports <a href="http://caniuse.com/#feat=font-unicode-range" target="_blank" >unicode-range</a> the subset parameter is ignored; the browser will select from the subsets supported by the font to get what it needs to render the text.</p>
 	</div>

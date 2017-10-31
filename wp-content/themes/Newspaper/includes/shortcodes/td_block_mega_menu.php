@@ -2,7 +2,7 @@
 
 
 /**
- * this short code does not have the map function so it dosn't appear in the mega menu @see td_global_blocks::td_vc_map_all
+ * this short code does not have the map function so it dosn't appear in the mega menu @see td_global_blocks::wpb_map_all
  * Class td_block_mega_menu
  */
 

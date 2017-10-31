@@ -57,7 +57,7 @@ foreach (td_api_module::get_all() as $td_module_class => $td_module_array) {
         <div class="td-box-row">
             <div class="td-box-description td-box-full">
                 <span class="td-box-title">Notice:</span>
-                <p>You can find documentation on how blocks are created from modules <?php echo td_api_text::get('panel_excerpt_modules_blocks_docs_url') ?> </p>
+                <p>You can find documentation on how blocks are created from modules <a href="http://forum.tagdiv.com/theme-blocks-modules/" target="_blank">here</a></p>
             </div>
             <div class="td-box-row-margin-bottom"></div>
         </div>

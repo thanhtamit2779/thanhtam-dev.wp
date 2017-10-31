@@ -88,7 +88,7 @@ class td_module_slide extends td_module {
     //overwrite the default function from td_module.php
     function get_comments() {
         $buffy = '';
-        if (td_util::get_option('tds_m_show_comments') != 'hide') {
+        if (td_util::get_option('tds_p_show_comments') != 'hide') {
             $buffy .= '<div class="td-post-comments"><i class="td-icon-comments"></i>';
             $buffy .= '<a href="' . get_comments_link($this->post->ID) . '">';
             $buffy .= get_comments_number($this->post->ID);

@@ -16,6 +16,10 @@ td-md-is-safari
     IE - misc
 */
 .ie8, .ie9, .ie10, .ie11 {
+  a:active,
+  a:hover {
+    outline: invert none medium;
+  }
 
   //html moved 1 px to left fix for desktop affix menu + boxed
   @media (min-width: @responsive_l_tablet_max) {
@@ -1069,12 +1073,6 @@ td-md-is-safari
   .td-boxed-layout .td-post-template-3 .td-image-gradient:before {
     width: 110%;
     left: -2px;
-  }
-
-  .td-big-grid-post {
-    .td-meta-info-container {
-      .transform(translateZ(0));
-    }
   }
 } // end .td-md-is-safari
 

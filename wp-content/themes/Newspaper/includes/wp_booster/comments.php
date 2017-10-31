@@ -17,7 +17,7 @@ if ((td_util::get_option('tds_disable_comments_sidewide') == '') && post_type_su
             $global_block_template_id = td_options::get('tds_global_block_template', 'td_block_template_1');
 
 	        if ('Newsmag' == TD_THEME_NAME) {
-		        $td_css_cls_pb_padding_side = 'td-pb-padding-side ';
+		        $td_css_cls_pb_padding_side = 'td-pb-padding-side';
 	        } else if ('Newspaper' == TD_THEME_NAME) {
 		        $td_css_cls_block_title = 'td-block-title';
 

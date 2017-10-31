@@ -73,7 +73,6 @@ class td_block_authors extends td_block {
 	    $buffy .= $this->get_block_css();
 
         $buffy .= $this->get_block_title();
-	    $buffy .= $this->get_pull_down_filter();
 
 
         if (!empty($td_authors)) {

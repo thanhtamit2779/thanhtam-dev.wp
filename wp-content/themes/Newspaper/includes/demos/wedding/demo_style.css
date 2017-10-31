@@ -43,21 +43,6 @@
     margin-bottom: 0;
   }
 }
-@media (min-width: 768px) and (max-width: 1018px) {
-  .td-wedding .td_mod_mega_menu .item-details a {
-    font-size: 14px !important;
-    line-height: 20px !important;
-  }
-}
-@media (min-width: 768px) and (max-width: 1018px) {
-  .td-wedding .td_module_1 .td-module-title,
-  .td-wedding .td_module_3 .td-module-title,
-  .td-wedding .td_module_10 .td-module-title,
-  .td-wedding .td_module_8 .td-module-title {
-    font-size: 20px;
-    line-height: 26px;
-  }
-}
 .td-wedding .td-newspaper-ad {
   padding-top: 80px;
   padding-bottom: 45px;

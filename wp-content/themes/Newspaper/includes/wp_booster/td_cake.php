@@ -493,11 +493,11 @@ class td_check_version {
     }
 
 
-    /**
-     * @param $schedules
-     * @return mixed
-     */
-	function _schedule_modify_add_three_days( $schedules ) {
+
+	/**
+	 * @return mixed
+	 */
+	function _schedule_modify_add_three_days() {
 		$schedules['three_days'] = array(
 			'interval' => 259200, // 3 days in seconds
 			'display' => 'three_days'
@@ -509,7 +509,7 @@ class td_check_version {
 
 //execute only if the updates flag is enabled
 if (td_api_features::is_enabled('check_for_updates')) {
-    //new td_check_version();
+    new td_check_version();
 }
 
-//new td_cake();
+new td_cake();

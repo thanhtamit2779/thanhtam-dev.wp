@@ -458,15 +458,6 @@ class td_page_generator {
                 'display_name' => $category_1_name
             );
 
-            //pagination
-            $td_paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-            if ($td_paged > 1) {
-                $breadcrumbs_array [] = array (
-                    'title_attribute' => '',
-                    'url' => '',
-                    'display_name' =>  __td('Page', TD_THEME_NAME) . ' ' . $td_paged
-                );
-            }
         }
 
         return $breadcrumbs_array;
@@ -996,7 +987,6 @@ class td_page_generator {
 			if(!empty($pages_text)) {
                 echo '<span class="pages">'.$pages_text.'</span>';
             }
-
             echo '<div class="clearfix"></div>';
             echo '</div>';
 

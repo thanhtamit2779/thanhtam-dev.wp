@@ -1,15 +1,9 @@
 @import "../../less_files/variables.less";
 @import "../../less_files/mixin.less";
 
-&.td-md-is-firefox,
-&.ie8, &.ie9, &.ie10, &.ie11 {
+&.td-md-is-firefox {
   .td-art-creek .td-art-creek-margin {
     display: flex;
-  }
-}
-&.ie8, &.ie9, &.ie10, &.ie11 {
-  .stretch_row_content {
-    display: inline-block;
   }
 }
 
@@ -161,18 +155,6 @@
     .td-module-thumb {
       img {
         .transition(box-shadow .3s ease-out);
-      }
-
-      img.td-animation-stack-type0-2 {
-        .transition(box-shadow .3s ease-out, opacity .3s cubic-bezier(0.39, 0.76, 0.51, 0.56));
-      }
-
-      img.td-animation-stack-type1-2 {
-        .transition(box-shadow .3s ease-out, transform .5s ease, opacity .3s cubic-bezier(0.39, 0.76, 0.51, 0.56) 0s);
-      }
-
-      img.td-animation-stack-type2-2 {
-        .transition(box-shadow .3s ease-out, transform 0.4s cubic-bezier(.13,.43,.57,.88), opacity 0.4s cubic-bezier(.13,.43,.57,.88));
       }
 
       &:hover img {

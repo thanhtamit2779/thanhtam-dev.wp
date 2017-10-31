@@ -33,18 +33,8 @@ usage:
 
 @all_span_selector - is the begining of the span selector
  */
-.td-md-is-firefox .td-art-creek .td-art-creek-margin,
-.ie8 .td-art-creek .td-art-creek-margin,
-.ie9 .td-art-creek .td-art-creek-margin,
-.ie10 .td-art-creek .td-art-creek-margin,
-.ie11 .td-art-creek .td-art-creek-margin {
+.td-md-is-firefox .td-art-creek .td-art-creek-margin {
   display: flex;
-}
-.ie8 .stretch_row_content,
-.ie9 .stretch_row_content,
-.ie10 .stretch_row_content,
-.ie11 .stretch_row_content {
-  display: inline-block;
 }
 .td-art-creek {
   /* responsive portrait phone */
@@ -200,30 +190,6 @@ usage:
   -moz-transition: box-shadow 0.3s ease-out;
   -o-transition: box-shadow 0.3s ease-out;
   transition: box-shadow 0.3s ease-out;
-}
-.td-art-creek .td_module_wrap .td-module-thumb img.td-animation-stack-type0-2,
-.td-art-creek .td_module_mega_menu .td-module-thumb img.td-animation-stack-type0-2,
-.td-art-creek .td_module_related_posts .td-module-thumb img.td-animation-stack-type0-2 {
-  -webkit-transition: box-shadow 0.3s ease-out, opacity 0.3s cubic-bezier(0.39, 0.76, 0.51, 0.56);
-  -moz-transition: box-shadow 0.3s ease-out, opacity 0.3s cubic-bezier(0.39, 0.76, 0.51, 0.56);
-  -o-transition: box-shadow 0.3s ease-out, opacity 0.3s cubic-bezier(0.39, 0.76, 0.51, 0.56);
-  transition: box-shadow 0.3s ease-out, opacity 0.3s cubic-bezier(0.39, 0.76, 0.51, 0.56);
-}
-.td-art-creek .td_module_wrap .td-module-thumb img.td-animation-stack-type1-2,
-.td-art-creek .td_module_mega_menu .td-module-thumb img.td-animation-stack-type1-2,
-.td-art-creek .td_module_related_posts .td-module-thumb img.td-animation-stack-type1-2 {
-  -webkit-transition: box-shadow 0.3s ease-out, transform 0.5s ease, opacity 0.3s cubic-bezier(0.39, 0.76, 0.51, 0.56) 0s;
-  -moz-transition: box-shadow 0.3s ease-out, transform 0.5s ease, opacity 0.3s cubic-bezier(0.39, 0.76, 0.51, 0.56) 0s;
-  -o-transition: box-shadow 0.3s ease-out, transform 0.5s ease, opacity 0.3s cubic-bezier(0.39, 0.76, 0.51, 0.56) 0s;
-  transition: box-shadow 0.3s ease-out, transform 0.5s ease, opacity 0.3s cubic-bezier(0.39, 0.76, 0.51, 0.56) 0s;
-}
-.td-art-creek .td_module_wrap .td-module-thumb img.td-animation-stack-type2-2,
-.td-art-creek .td_module_mega_menu .td-module-thumb img.td-animation-stack-type2-2,
-.td-art-creek .td_module_related_posts .td-module-thumb img.td-animation-stack-type2-2 {
-  -webkit-transition: box-shadow 0.3s ease-out, transform 0.4s cubic-bezier(0.13, 0.43, 0.57, 0.88), opacity 0.4s cubic-bezier(0.13, 0.43, 0.57, 0.88);
-  -moz-transition: box-shadow 0.3s ease-out, transform 0.4s cubic-bezier(0.13, 0.43, 0.57, 0.88), opacity 0.4s cubic-bezier(0.13, 0.43, 0.57, 0.88);
-  -o-transition: box-shadow 0.3s ease-out, transform 0.4s cubic-bezier(0.13, 0.43, 0.57, 0.88), opacity 0.4s cubic-bezier(0.13, 0.43, 0.57, 0.88);
-  transition: box-shadow 0.3s ease-out, transform 0.4s cubic-bezier(0.13, 0.43, 0.57, 0.88), opacity 0.4s cubic-bezier(0.13, 0.43, 0.57, 0.88);
 }
 .td-art-creek .td_module_wrap .td-module-thumb:hover img,
 .td-art-creek .td_module_mega_menu .td-module-thumb:hover img,

@@ -14,7 +14,7 @@ class td_options {
 	/**
 	 * @var null keep a local copy of all the settings
 	 */
-	static $td_options = NULL;
+	static $td_options = NULL ;
 
 
 	/**

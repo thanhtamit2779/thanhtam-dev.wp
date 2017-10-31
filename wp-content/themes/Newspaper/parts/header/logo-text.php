@@ -53,6 +53,13 @@ if (!empty($td_customLogoR)) {
             $retina_logo_width = 'width="' . $img_props[1] . '"';
         }
     }
+
+
+
+
+
+
+
 	?>
 		<a class="td-main-logo" href="<?php echo esc_url(home_url( '/' )); ?>">
 			<img class="td-retina-data"  data-retina="<?php echo esc_attr($td_customLogoR) ?>" src="<?php echo $td_customLogo?>" alt="<?php echo $td_logo_alt ?>"<?php echo $td_logo_title ?> <?php echo $retina_logo_width ?>/>

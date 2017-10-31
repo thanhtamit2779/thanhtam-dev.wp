@@ -136,7 +136,7 @@ function load_front_js() {
 
     switch ($td_deploy_mode) {
         default: //deploy
-            wp_enqueue_script('td-site', td_global::$get_template_directory_uri . '/mobile/js/tagdiv_theme.min.js', array('jquery'), TD_THEME_VERSION, true);
+            wp_enqueue_script('td-site', td_global::$get_template_directory_uri . '/mobile/js/tagdiv_theme.js', array('jquery'), TD_THEME_VERSION, true);
             break;
 
         case 'dev':

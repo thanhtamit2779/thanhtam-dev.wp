@@ -10,11 +10,13 @@
   /* Menu */
   /* Content */
 }
-.td-magazine.td-boxed-layout .td-container-wrap {
+.td-magazine.td-boxed-layout #td-outer-wrap {
   /* responsive on desktop */
 }
 @media (min-width: 1180px) {
-  .td-magazine.td-boxed-layout .td-container-wrap {
+  .td-magazine.td-boxed-layout #td-outer-wrap {
+    width: 1164px;
+    margin: 0 auto;
     -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.12);
     -moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.12);
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.12);

@@ -30,16 +30,9 @@ if(!empty($_REQUEST['action_import']) && $_REQUEST['action_import'] == 'import_t
 
 
     if (!empty($_POST['td_update_theme_options']['tds_update_theme_options'])) {
-        $theme_settings = @unserialize(@base64_decode($_POST['td_update_theme_options']['tds_update_theme_options']));
-        if (is_array($theme_settings)) {
-            if (update_option(TD_THEME_OPTIONS_NAME, $theme_settings)) {
-                $show_update_msg = 1;
-            }
-        } else {
-            //imported data is invalid
-            $show_update_msg = 3;
+        if (update_option(TD_THEME_OPTIONS_NAME, @unserialize(@base64_decode($_POST['td_update_theme_options']['tds_update_theme_options'])))) {
+            $show_update_msg = 1;
         }
-
     }
 }
 
@@ -79,21 +72,6 @@ if(!empty($_REQUEST['action_reset']) && $_REQUEST['action_reset'] == 'reset_them
         }
     }
 }
-
-// export demo settings
-$show_demo_export_settings_textarea = false;
-if(!empty($_REQUEST['action_export_demo']) && $_REQUEST['action_export_demo'] == 'export_demo_settings') {
-
-    // remove ads
-    td_demo_misc::clear_all_ads();
-
-    // remove all other uploaded images
-    td_demo_misc::clear_uploads_for_demo_export();
-
-    // update this variable to show the textarea box with demo serialized settings
-    $show_demo_export_settings_textarea = true;
-}
-
 ?>
 <div class="td_displaying_saving"></div>
 <div class="td_wrapper_saving_gifs">
@@ -134,7 +112,7 @@ if(!empty($_REQUEST['action_export_demo']) && $_REQUEST['action_export_demo'] ==
 	                </li>
 	            </ul>
 	        </div>
-	        <div id="td-col-right" class="td-panel-content">
+	        <div id="td-col-right" class="td-panel-content" style="min-height: 900px">
 
             <div id="td-panel-welcome" class="td-panel-active td-panel">
 
@@ -237,78 +215,12 @@ if(!empty($_REQUEST['action_export_demo']) && $_REQUEST['action_export_demo'] ==
                             <div class="td-box-row-margin-bottom"></div>
                         </div>
 
-                    <div class="td-box-row td-reset-theme-settings">
+                    <div class="td-box-row">
                         <input type="submit" class="td-big-button td-button-remove-border" name="action" value="Reset theme settings">
                     </div>
                 </form>
 
                 <?php echo td_panel_generator::box_end();?>
-
-            <?php if (TD_DEPLOY_MODE == 'demo' or TD_DEPLOY_MODE == 'dev') { ?>
-
-                <?php echo td_panel_generator::box_start('Export Theme Settings for Demo');?>
-
-                <!-- Export Settings for Demo -->
-                <form id="td_panel_export_demo_settings"
-                      name="td_panel_export_demo_settings"
-                      action="?page=td_theme_panel&td_page=td_view_import_export_settings&action_export_demo=export_demo_settings"
-                      method="post"
-                      onsubmit="
-                      tdConfirm.showModal( 'Are you sure you want to export this demo settings?',
-		                window,
-		                function( formObject ) {
-		                    formObject.submit();
-		                    tb_remove();
-		                },
-		                [this],
-                        'It will remove all uploaded logo and background images and also remove all panel ad codes!');
-                        return false
-                        ">
-
-                    <input type="hidden" name="action" value="td_ajax_update_panel">
-
-                    <div class="td-box-row">
-                        <div class="td-box-description td-box-full">
-                            <span class="td-box-title">EXPORT DEMO SETTINGS</span>
-                            <p>
-                                This section contains all the panel options for demo settings export ( without logos, ads, backgrounds... )
-                            </p>
-                        </div>
-
-                        <?php
-                        if ($show_demo_export_settings_textarea) { ?>
-
-                        <div class="td-box-control-full">
-                            <?php
-                            $td_export_demo_settings_ref = &td_options::get_all_by_ref();
-
-                            $td_export_demo_settings = '';
-                            if (!empty($td_export_demo_settings_ref)) {
-                                $td_export_demo_settings = base64_encode(serialize($td_export_demo_settings_ref));
-                            }
-                            echo td_panel_generator::textarea(array(
-                                'ds' => 'td_unregistered',
-                                'option_id' => 'tds_export_demo_settings',
-                                'value' => $td_export_demo_settings
-                            ));
-                            ?>
-                        </div>
-
-                        <?php } ?>
-
-                        <div class="td-box-row-margin-bottom"></div>
-                    </div>
-
-                    <div class="td-box-row td-demo-export-settings">
-                        <input type="submit" class="td-big-button td-button-remove-border" name="action" value="Export Demo Settings">
-                    </div>
-
-                </form>
-
-                <?php echo td_panel_generator::box_end();?>
-
-            <?php } ?>
-
             </div>
 
 
@@ -325,5 +237,4 @@ if(!empty($_REQUEST['action_export_demo']) && $_REQUEST['action_export_demo'] ==
 </div>
 <?php if($show_update_msg == 1){?><script type="text/javascript">alert('Import is done!');</script><?php }?>
 <?php if($show_update_msg == 2){?><script type="text/javascript">alert('Theme settings reset completed!');</script><?php }?>
-<?php if($show_update_msg == 3){?><script type="text/javascript">alert('Imported data is invalid. Failed to update the theme settings!');</script><?php }?>
 <br><br><br><br><br><br><br>

@@ -75,9 +75,6 @@ td_demo_misc::update_background_mobile('td_pic_1');
 // login popup background
 td_demo_misc::update_background_login('td_pic_1');
 
-// footer background
-td_demo_misc::update_background_footer('td_pic_13');
-
 
 /*  ----------------------------------------------------------------------------
     logo

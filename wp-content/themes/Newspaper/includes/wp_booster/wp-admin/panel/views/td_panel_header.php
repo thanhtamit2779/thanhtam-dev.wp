@@ -183,7 +183,7 @@
                         <ul>
                             <li>If it\'s enabled the Sign In / Register link shows up in the top menu</li>
                             <li>If it\'s enabled but the top menu is disabled the modal will still appear for users who want to post a comment(if posting a comment is set to require login/registration)</li>
-                            <li>If it\'s disabled the login/registration will be done via the WordPress default interface</li>
+                            <li>If it\'s disabled the login/registration will be done via the wordpress default interface</li>
                         </ul>
                 ', 'right')?>
             </p>
@@ -410,28 +410,6 @@
 		</div>
 	</div>
 
-    <div class="td-box-section-separator"></div>
-
-    <?php if ('ionMag' == TD_THEME_NAME) { ?>
-        <!-- Social networks: enable disable -->
-        <div class="td-box-row">
-            <div class="td-box-description">
-                <span class="td-box-title">Show social icons</span>
-                <p>Enable / Disable social networks in main menu</p>
-            </div>
-            <div class="td-box-control-full">
-                <?php
-                echo td_panel_generator::checkbox(array(
-                    'ds' => 'td_option',
-                    'option_id' => 'td_social_networks_menu_show',
-                    'true_value' => 'show',
-                    'false_value' => ''
-                ));
-                ?>
-            </div>
-        </div>
-    <?php } ?>
-
 <?php echo td_panel_generator::box_end();?>
 
 
@@ -630,112 +608,7 @@
 <?php echo td_panel_generator::box_end();?>
 
 
-<?php
-if ('ionMag' == TD_THEME_NAME) { ?>
 
-    <!-- HEADER BACKGROUND -->
-    <?php echo td_panel_generator::box_start('Header background', false); ?>
-
-    <!-- BACKGROUND UPLOAD -->
-    <div class="td-box-row">
-        <div class="td-box-description">
-            <span class="td-box-title">HEADER BACKGROUND</span>
-            <p>Upload a header background image</p>
-        </div>
-        <div class="td-box-control-full">
-            <?php
-            echo td_panel_generator::upload_image(array(
-                'ds' => 'td_option',
-                'option_id' => 'tds_header_background_image'
-            ));
-            ?>
-        </div>
-    </div>
-
-    <!-- Background Repeat -->
-    <div class="td-box-row">
-        <div class="td-box-description">
-            <span class="td-box-title">REPEAT</span>
-            <p>How the background image will be displayed</p>
-        </div>
-        <div class="td-box-control-full">
-            <?php
-            echo td_panel_generator::radio_button_control(array(
-                'ds' => 'td_option',
-                'option_id' => 'tds_header_background_repeat',
-                'values' => array(
-                    array('text' => 'No Repeat', 'val' => ''),
-                    array('text' => 'Tile', 'val' => 'repeat'),
-                    array('text' => 'Tile Horizontally', 'val' => 'repeat-x'),
-                    array('text' => 'Tile Vertically', 'val' => 'repeat-y')
-                )
-            ));
-            ?>
-        </div>
-    </div>
-
-    <!-- Background Size -->
-    <div class="td-box-row">
-        <div class="td-box-description">
-            <span class="td-box-title">SIZE</span>
-            <p>Set the background image size</p>
-        </div>
-        <div class="td-box-control-full">
-            <?php
-            echo td_panel_generator::radio_button_control(array(
-                'ds' => 'td_option',
-                'option_id' => 'tds_header_background_size',
-                'values' => array(
-                    array('text' => 'Auto', 'val' => ''),
-                    array('text' => 'Full Width', 'val' => '100% auto'),
-                    array('text' => 'Full Height', 'val' => 'auto 100%'),
-                    array('text' => 'Cover', 'val' => 'cover'),
-                    array('text' => 'Contain', 'val' => 'contain')
-                )
-            ));
-            ?>
-        </div>
-    </div>
-
-    <!-- Background position -->
-    <div class="td-box-row">
-        <div class="td-box-description">
-            <span class="td-box-title">POSITION</span>
-            <p>Position your background image</p>
-        </div>
-        <div class="td-box-control-full">
-            <?php
-            echo td_panel_generator::radio_button_control(array(
-                'ds' => 'td_option',
-                'option_id' => 'tds_header_background_position',
-                'values' => array(
-                    array('text' => 'Bottom', 'val' => ''),
-                    array('text' => 'Center', 'val' => 'center center'),
-                    array('text' => 'Top', 'val' => 'center top')
-                )
-            ));
-            ?>
-        </div>
-    </div>
-
-    <!-- Background opacity -->
-    <div class="td-box-row">
-        <div class="td-box-description">
-            <span class="td-box-title">BACKGROUND OPACITY</span>
-            <p>Set the background image transparency (Example: 0.3)</p>
-        </div>
-        <div class="td-box-control-full">
-            <?php
-            echo td_panel_generator::input(array(
-                'ds' => 'td_option',
-                'option_id' => 'tds_header_background_opacity'
-            ));
-            ?>
-        </div>
-    </div>
-
-    <?php echo td_panel_generator::box_end();?>
-<?php } ?>
 
 
 <!-- iOS Bookmarklet -->

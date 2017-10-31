@@ -183,11 +183,9 @@
   font-size: 0.75em !important;
 }
 .woocommerce ul.products li.product .woocommerce-loop-product__title {
-  font-size: 15px;
-  font-weight: 500;
-  line-height: 19px;
-  padding-top: 0;
-  /* responsive portrait phone */
+font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
 }
 @media (max-width: 767px) {
   .woocommerce ul.products li.product .woocommerce-loop-product__title {
@@ -195,7 +193,6 @@
   }
 }
 .woocommerce ul.products li.product .price {
-  font-weight: 600;
   color: #111;
   font-size: 14px;
   /* responsive portrait phone */
@@ -284,10 +281,14 @@
   margin-bottom: 0;
 }
 .single-product .product .summary .price {
-  font-size: 24px;
-  color: #111;
-  font-weight: bold;
-  margin: 20px 0 18px 0;
+    font-size: 20px;
+    color: #183544;
+    padding: 20px 0 18px 0;
+    font-weight: 500;
+    text-align: center;
+    background: #dae1e5;
+    margin-bottom: 0;
+    border: 1px solid #fff;
 }
 .single-product .product .summary .cart {
   margin-top: 20px;

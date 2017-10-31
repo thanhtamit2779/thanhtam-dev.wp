@@ -167,9 +167,6 @@ add_action('wp_ajax_td_ajax_check_envato_code', array('td_ajax', 'on_ajax_check_
 add_action('wp_ajax_td_ajax_register_forum_user', array('td_ajax', 'on_ajax_register_forum_user'));
 add_action('wp_ajax_td_ajax_manual_activation', array('td_ajax', 'on_ajax_manual_activation'));
 
-//ajax: db check
-add_action('wp_ajax_td_ajax_db_check', array('td_ajax', 'on_ajax_db_check'));
-
 
 
 //// @todo MUST
@@ -197,7 +194,6 @@ add_theme_support('post-formats', array('video'));
 add_theme_support('automatic-feed-links');
 add_theme_support('html5', array('comment-list', 'comment-form', 'search-form', 'gallery', 'caption'));
 add_theme_support('woocommerce');
-add_theme_support('bbpress');
 
 
 /*
@@ -224,12 +220,8 @@ function load_front_css() {
 		wp_enqueue_style('td-theme', td_global::$get_template_directory_uri . '/td_less_style.css.php?part=style.css_v2',  '', TD_THEME_VERSION, 'all' );
 
 		// load WooCommerce LESS only when needed
-		if (td_global::$is_woocommerce_installed === true ) {
+		if (td_global::$is_woocommerce_installed === true) {
 			wp_enqueue_style('td-theme-woo', td_global::$get_template_directory_uri . '/td_less_style.css.php?part=woocommerce', '', TD_THEME_VERSION, 'all');
-		}
-		// load Bbpress LESS only when needed
-		if (td_global::$is_bbpress_installed === true ) {
-			wp_enqueue_style('td-theme-bbpress', td_global::$get_template_directory_uri . '/td_less_style.css.php?part=bbpress', '', TD_THEME_VERSION, 'all');
 		}
 
 		if ($demo_id !== false and td_global::$demo_list[$demo_id]['uses_custom_style_css'] === true) {
@@ -239,13 +231,8 @@ function load_front_css() {
 		wp_enqueue_style('td-theme', get_stylesheet_uri(), '', TD_THEME_VERSION, 'all' );
 
 		// load the WooCommerce CSS only when needed
-		if (td_global::$is_woocommerce_installed === true ) {
+		if (td_global::$is_woocommerce_installed === true) {
 			wp_enqueue_style('td-theme-woo', td_global::$get_template_directory_uri . '/style-woocommerce.css',  '', TD_THEME_VERSION, 'all' );
-		}
-
-		// load the Bbpress CSS only when needed
-		if (td_global::$is_bbpress_installed === true ) {
-			wp_enqueue_style('td-theme-bbpress', td_global::$get_template_directory_uri . '/style-bbpress.css',  '', TD_THEME_VERSION, 'all' );
 		}
 
 		// If we have a DEMO installed - load the demo CSS
@@ -350,22 +337,30 @@ function load_front_js() {
 		$td_deploy_mode = 'demo';
 	}
 
-	if ($td_deploy_mode == 'dev') {
-        // dev version - load each file separately
-        $last_js_file_id = '';
-        foreach (td_global::$js_files as $js_file_id => $js_file) {
-            if ($last_js_file_id == '') {
-                wp_enqueue_script($js_file_id, td_global::$get_template_directory_uri . $js_file, array('jquery'), TD_THEME_VERSION, true); //first, load it with jQuery dependency
-            } else {
-                wp_enqueue_script($js_file_id, td_global::$get_template_directory_uri . $js_file, array($last_js_file_id), TD_THEME_VERSION, true);  //not first - load with the last file dependency
-            }
-            $last_js_file_id = $js_file_id;
-        }
-    } else {
-        wp_enqueue_script('td-site-min', td_global::$get_template_directory_uri . '/js/tagdiv_theme.min.js', array('jquery'), TD_THEME_VERSION, true);
-    }
 
+	switch ($td_deploy_mode) {
+		default: //deploy
+			wp_enqueue_script('td-site', td_global::$get_template_directory_uri . '/js/tagdiv_theme.js', array('jquery'), TD_THEME_VERSION, true);
+			break;
 
+		case 'demo':
+			wp_enqueue_script('td-site-min', td_global::$get_template_directory_uri . '/js/tagdiv_theme.min.js', array('jquery'), TD_THEME_VERSION, true);
+			break;
+
+		case 'dev':
+			// dev version - load each file separately
+			$last_js_file_id = '';
+			foreach (td_global::$js_files as $js_file_id => $js_file) {
+				if ($last_js_file_id == '') {
+					wp_enqueue_script($js_file_id, td_global::$get_template_directory_uri . $js_file, array('jquery'), TD_THEME_VERSION, true); //first, load it with jQuery dependency
+				} else {
+					wp_enqueue_script($js_file_id, td_global::$get_template_directory_uri . $js_file, array($last_js_file_id), TD_THEME_VERSION, true);  //not first - load with the last file dependency
+				}
+				$last_js_file_id = $js_file_id;
+			}
+			break;
+
+	}
 
 	//add the comments reply to script on single pages
 	if (is_singular()) {
@@ -423,54 +418,34 @@ add_action('admin_print_styles-widgets.php', 'td_on_admin_print_styles_farbtasti
 add_action('admin_enqueue_scripts', 'load_wp_admin_js');
 function load_wp_admin_js() {
 
-    if (TD_DEPLOY_MODE == 'dev') {
-        // dev version - load each file separately
-        $last_js_file_id = '';
-        foreach (td_global::$js_files_for_wp_admin as $js_file_id => $js_file_params) {
-            if ($last_js_file_id == '') {
-                wp_enqueue_script($js_file_id, td_global::$get_template_directory_uri . $js_file_params, array('jquery', 'wp-color-picker'), TD_THEME_VERSION, false); //first, load it with jQuery dependency
-            } else {
-                wp_enqueue_script($js_file_id, td_global::$get_template_directory_uri . $js_file_params, array($last_js_file_id), TD_THEME_VERSION, false);  //not first - load with the last file dependency
-            }
-            $last_js_file_id = $js_file_id;
-        }
-    } else {
-        wp_enqueue_script('td-wp-admin-js', td_global::$get_template_directory_uri . '/js/td_wp_admin.min.js', array('jquery', 'wp-color-picker'), TD_THEME_VERSION, false);
-    }
+
+	$current_page_slug = '';
+	if (isset($_GET['page'])) {
+		$current_page_slug = $_GET['page'];
+	}
 
 
+	// dev version - load each file separately
+	$last_js_file_id = '';
+	foreach (td_global::$js_files_for_wp_admin as $js_file_id => $js_file_params) {
 
-    if (isset($_GET['page']) && $_GET['page'] === 'td_theme_panel') {
-        $last_js_file_id = '';
-        foreach (td_global::$js_files_for_td_theme_panel as $js_file_id => $js_file_params) {
-            if ($last_js_file_id == '') {
-                wp_enqueue_script($js_file_id, td_global::$get_template_directory_uri . $js_file_params, array('jquery', 'wp-color-picker'), TD_THEME_VERSION, false); //first, load it with jQuery dependency
-            } else {
-                wp_enqueue_script($js_file_id, td_global::$get_template_directory_uri . $js_file_params, array($last_js_file_id), TD_THEME_VERSION, false);  //not first - load with the last file dependency
-            }
-            $last_js_file_id = $js_file_id;
-        }
-    }
+		// skip a file if it has custom page_slugs
+		if (!empty($js_file_params['show_only_on_page_slugs']) and !in_array($current_page_slug, $js_file_params['show_only_on_page_slugs'])) {
+			continue;
+		}
 
+		if ($last_js_file_id == '') {
+			wp_enqueue_script($js_file_id, td_global::$get_template_directory_uri . $js_file_params['url'], array('jquery', 'wp-color-picker'), TD_THEME_VERSION, false); //first, load it with jQuery dependency
+		} else {
+			wp_enqueue_script($js_file_id, td_global::$get_template_directory_uri . $js_file_params['url'], array($last_js_file_id), TD_THEME_VERSION, false);  //not first - load with the last file dependency
+		}
+		$last_js_file_id = $js_file_id;
+	}
 
 	add_thickbox();
+
 }
 
-
-/*
- * set media-upload is loaded js global
- * used by tdConfirm.js
- */
-add_action('admin_print_footer_scripts', 'check_if_media_uploads_is_loaded', 9999);
-function check_if_media_uploads_is_loaded() {
-    $wp_scripts = wp_scripts();
-    $media_upload = $wp_scripts->query('media-upload', 'done');
-    if ($media_upload === true) {
-        //td_js_buffer::add_to_wp_admin_footer('var td_media_upload_loaded = true;');
-        //echo '<script>var td_media_upload_loaded = true;</script>';
-        echo '<script>tdConfirm.mediaUploadLoaded = true;</script>';
-    }
-}
 
 /* ----------------------------------------------------------------------------
  * Prepare the head canonical links on smart lists and pages with pagination.
@@ -1151,22 +1126,11 @@ function td_custom_menu() {
 		'id' => 'td-menu1'
 	));
 
-	if (TD_THEME_NAME == "ionMag") {
-        $wp_admin_bar->add_menu( array(
-                'id'   => 'our_support_item',
-                'meta' => array('title' => 'Theme support', 'target' => '_blank'),
-                'title' => 'Theme support',
-                'href' => 'https://www.wpion.com/members/' )
-        );
-    } else {
-        $wp_admin_bar->add_menu( array(
-                'id'   => 'our_support_item',
-                'meta' => array('title' => 'Theme support', 'target' => '_blank'),
-                'title' => 'Theme support',
-                'href' => 'http://forum.tagdiv.com' )
-        );
-    }
-
+	$wp_admin_bar->add_menu( array(
+		'id'   => 'our_support_item',
+		'meta' => array('title' => 'Theme support', 'target' => '_blank'),
+		'title' => 'Theme support',
+		'href' => 'http://forum.tagdiv.com' ));
 
 }
 
@@ -1344,9 +1308,9 @@ function td_vc_init() {
 		vc_set_as_theme(true);
 	}
 
-	if (function_exists('vc_map')) {
+	if (function_exists('wpb_map')) {
 		//map all of our blocks in page builder
-		td_global_blocks::td_vc_map_all();
+		td_global_blocks::wpb_map_all();
 	}
 
 	if (function_exists('vc_disable_frontend')) {
@@ -1677,13 +1641,6 @@ function td_gallery_shortcode($output = '', $atts, $content = false) {
 						//image type and width - used to retrieve retina image
 						$thumbnail_type = 'td_1021x580';
 						$thumbnail_width = '1021';
-						break;
-
-					case 'ionMag' :
-						$td_temp_image_url = wp_get_attachment_image_src($image_id, 'td_980x580');       //980x580 images - for big slide
-						//change image type and width - used to retrieve retina image
-						$thumbnail_type = 'td_980x580';
-						$thumbnail_width = '980';
 						break;
 				}
 			} else {
@@ -2292,8 +2249,8 @@ function td_init_booster() {
 
 }
 
-//@td_js
-require_once('td_js.php');
+
+
 
 /*  ----------------------------------------------------------------------------
     check to see if we are on the backend
@@ -2513,9 +2470,6 @@ function td_customize_js() {
 
 add_filter('admin_body_class', 'td_on_admin_body_class' );
 function td_on_admin_body_class( $classes ) {
-    if (TD_THEME_NAME == "ionMag" && (!defined('TD_DEPLOY_IS_PREMIUM') || TD_DEPLOY_IS_PREMIUM === false)) {
-        $classes .= ' td-theme-panel-ionMag-free ';
-    }
 	$classes .= ' td-theme-' . TD_THEME_NAME;
 	return $classes;
 }

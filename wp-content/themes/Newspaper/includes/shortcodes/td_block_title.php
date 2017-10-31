@@ -32,8 +32,6 @@ class td_block_title extends td_block {
 		    $buffy .= $this->get_block_css();
 
             $buffy .= $this->get_block_title();
-	        $buffy .= $this->get_pull_down_filter(); //get the sub category filter for this block
-
             $buffy .= '<div class="td_mod_wrap">';
 
 	    $buffy .= '</div>';

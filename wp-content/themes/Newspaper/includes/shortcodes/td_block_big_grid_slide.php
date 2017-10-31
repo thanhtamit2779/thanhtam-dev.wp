@@ -15,10 +15,6 @@ class td_block_big_grid_slide extends td_block {
 		$this->internal_block_instance = new td_block_big_grid_2();
 
 
-		// This 'in_big_grid_slide' param is set to not generate css (@see generate_css)
-		$this->internal_block_instance->in_big_grid_slide = true;
-
-
 		$this->block_uid = td_global::td_generate_unique_id(); //update unique id on each render
 
 		$buffy = ''; //output buffer

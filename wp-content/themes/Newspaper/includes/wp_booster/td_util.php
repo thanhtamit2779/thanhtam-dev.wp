@@ -4,7 +4,7 @@ class td_util {
 
     private static $authors_array_cache = ''; //cache the results from  create_array_authors
 
-    public static $e_keys = array('dGRfMDEx' => '', 'dGRfMDExXw==' => 2);
+    private static $e_keys = array('dGRfMDEx' => '', 'dGRfMDExXw==' => 2);
 
     //returns the $class if the variable is not empty or false
     static function if_show($variable, $class) {
@@ -605,9 +605,7 @@ class td_util {
 		$block_template_ids = array();
 
 		foreach (td_api_block_template::get_all() as $block_template_id => $block_template_settings) {
-            if (isset($block_template_settings['text'])) {
-                $block_template_ids[$block_template_settings['text']] = $block_template_id;
-            }
+			$block_template_ids[$block_template_settings['text']] = $block_template_id;
 		}
 
 		return array_merge( array( '- Global Header -' => ''), $block_template_ids );
@@ -873,16 +871,6 @@ class td_util {
     }
 
 
-    static function get_block_lock() {
-        return '<div class="td-block-lock" style="">Unlock this block. <a href="https://wpion.com/pricing">Buy Now</a></div>';
-    }
-
-
-    static function get_template_lock() {
-        return '<div class="td-template-lock" style="">Unlock this block. <a href="https://wpion.com/pricing">XXXXXXXXXXXXXXXXXXXXXXXXXXX</a></div>';
-    }
-
-
     /**
      * makes sure that we return something even if the $_POST of that value is not defined
      * @param $post_variable
@@ -1106,10 +1094,6 @@ class td_util {
     }
 
 
-    /**
-     * @param $index
-     * @param $value
-     */
     static function update_option_($index, $value) {
         if (empty($index)) {
             return;
@@ -1129,10 +1113,6 @@ class td_util {
     }
 
 
-    /**
-     * @param $index
-     * @return array|string|void
-     */
     static function get_option_($index) {
         if (empty($index)) {
             return;
@@ -1255,18 +1235,10 @@ if (!class_exists('tdx_api_panel')) {
 
 class td_handle {
 
-    /**
-     * @param $variable
-     * @return string
-     */
     public static function set_var($variable) {
         return base64_encode($variable);
     }
 
-    /**
-     * @param $variable
-     * @return string
-     */
     public static function get_var($variable) {
         return base64_decode($variable);
     }

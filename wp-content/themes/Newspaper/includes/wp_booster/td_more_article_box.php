@@ -109,127 +109,62 @@ class td_more_article_box {
                     <div class="td-content-more-articles-box">
 
                     <?php
-                    $td_display_module = td_util::get_option('tds_more_articles_on_post_pages_display_module');
-                    //itinerate through the result set and display results
+                    $td_display_module = intval(td_util::get_option('tds_more_articles_on_post_pages_display_module'));
+                    //itinerate thru the resultset and display resuts
                     foreach($td_query_more_article->posts as $each_post) {
+                        switch($td_display_module) {
+                            //module 2
+                            case 2:
+                                $td_mod = new td_module_2($each_post);
+                                echo $td_mod->render();
+                                break;
 
-                        if ( 'ionMag' == TD_THEME_NAME ) {
-                            switch($td_display_module) {
-                                //module 2
-                                case 2:
-                                    $td_mod = new td_module_2($each_post);
-                                    echo $td_mod->render();
-                                    break;
+                            //module 3
+                            case 3:
+                                $td_mod = new td_module_3($each_post);
+                                echo $td_mod->render();
+                                break;
 
-                                //module 3
-                                case 3:
-                                    $td_mod = new td_module_3($each_post);
-                                    echo $td_mod->render();
-                                    break;
+                            //module 4
+                            case 4:
+                                $td_mod = new td_module_4($each_post);
+                                echo $td_mod->render();
+                                break;
 
-                                //module 6
-                                case 6:
-                                    $td_mod = new td_module_6($each_post);
-                                    echo $td_mod->render();
-                                    break;
+                            //module 5
+                            case 5:
+                                $td_mod = new td_module_5($each_post);
+                                echo $td_mod->render();
+                                break;
 
-                                //module rd_1
-                                case 'td_module_rd_1':
-                                    $td_mod = new td_module_rd_1($each_post);
-                                    echo $td_mod->render();
-                                    break;
+                            //module 6
+                            case 6:
+                                $td_mod = new td_module_6($each_post);
+                                echo $td_mod->render();
+                                break;
 
-                                //module rd_2
-                                case 'td_module_rd_2':
-                                    $td_mod = new td_module_rd_2($each_post);
-                                    echo $td_mod->render();
-                                    break;
+                            //module 7
+                            case 7:
+                                $td_mod = new td_module_7($each_post);
+                                echo $td_mod->render();
+                                break;
 
-                                //module rd_9
-                                case 'td_module_rd_9':
-                                    $td_mod = new td_module_rd_9($each_post);
-                                    echo $td_mod->render();
-                                    break;
+                            //module 8
+                            case 8:
+                                $td_mod = new td_module_8($each_post);
+                                echo $td_mod->render();
+                                break;
 
-                                //module rd_14
-                                case 'td_module_rd_14':
-                                    $td_mod = new td_module_rd_14($each_post);
-                                    echo $td_mod->render();
-                                    break;
+                            //module 9
+                            case 9:
+                                $td_mod = new td_module_9($each_post);
+                                echo $td_mod->render();
+                                break;
 
-                                //module rd_15
-                                case 'td_module_rd_15':
-                                    $td_mod = new td_module_rd_15($each_post);
-                                    echo $td_mod->render();
-                                    break;
-
-                                //module rd_20
-                                case 'td_module_rd_20':
-                                    $td_mod = new td_module_rd_20($each_post);
-                                    echo $td_mod->render();
-                                    break;
-
-                                //module 1 > default
-                                default:
-                                    $td_mod = new td_module_1($each_post);
-                                    echo $td_mod->render();
-                                    break;
-                            }
-                        } else {
-                            switch($td_display_module) {
-                                //module 2
-                                case 2:
-                                    $td_mod = new td_module_2($each_post);
-                                    echo $td_mod->render();
-                                    break;
-
-                                //module 3
-                                case 3:
-                                    $td_mod = new td_module_3($each_post);
-                                    echo $td_mod->render();
-                                    break;
-
-                                //module 4
-                                case 4:
-                                    $td_mod = new td_module_4($each_post);
-                                    echo $td_mod->render();
-                                    break;
-
-                                //module 5
-                                case 5:
-                                    $td_mod = new td_module_5($each_post);
-                                    echo $td_mod->render();
-                                    break;
-
-                                //module 6
-                                case 6:
-                                    $td_mod = new td_module_6($each_post);
-                                    echo $td_mod->render();
-                                    break;
-
-                                //module 7
-                                case 7:
-                                    $td_mod = new td_module_7($each_post);
-                                    echo $td_mod->render();
-                                    break;
-
-                                //module 8
-                                case 8:
-                                    $td_mod = new td_module_8($each_post);
-                                    echo $td_mod->render();
-                                    break;
-
-                                //module 9
-                                case 9:
-                                    $td_mod = new td_module_9($each_post);
-                                    echo $td_mod->render();
-                                    break;
-
-                                default:
-                                    $td_mod = new td_module_1($each_post);
-                                    echo $td_mod->render();
-                                    break;
-                            }
+                            default:
+                                $td_mod = new td_module_1($each_post);
+                                echo $td_mod->render();
+                                break;
                         }
 
                     }?>

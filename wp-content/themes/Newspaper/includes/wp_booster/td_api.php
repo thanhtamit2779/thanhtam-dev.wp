@@ -1655,7 +1655,7 @@ class td_api_text {
 
 		// fast start notification on welcome page
 		// *overwritten in 012 for tagDiv composer
-		'welcome_fast_start' => 'Install Visual Composer plugin and also install the social counter plugin if you want to add the counters on your sidebar - from our <a href="admin.php?page=td_theme_plugins">plugins panel</a>',
+		'welcome_fast_start' => 'Install visual composer plugin and also install the social counter plugin if you want to add the counters on your sidebar - from our <a href="admin.php?page=td_theme_plugins">plugins panel</a>',
 
 		// welcome and support panels
 		'welcome_support_forum' => '',
@@ -1676,11 +1676,7 @@ class td_api_text {
 
 		// existing content documentation url
 		// *overwritten in 012
-		'panel_existing_content_url' => '<a href="http://forum.tagdiv.com/existing-content/" target="_blank">read more</a>',
-
-		// excerpt settings panel theme modules and blocks docs link *overwritten in 012
-		'panel_excerpt_modules_blocks_docs_url' => '<a href="http://forum.tagdiv.com/theme-blocks-modules/" target="_blank">here</a>'
-
+		'panel_existing_content_url' => '<a href="http://forum.tagdiv.com/existing-content/" target="_blank">read more</a>'
 	);
 
 

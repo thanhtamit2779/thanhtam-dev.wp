@@ -48,15 +48,8 @@ abstract class td_category_template {
         //the subcategories
         if (!empty($this->current_category_obj->cat_ID)) {
 
-            //check for subcategories
-            $subcategories = get_categories( array(
-                'child_of'      => $this->current_category_obj->cat_ID,
-                'hide_empty'    => false,
-                'fields'        => 'ids',
-            ) );
+	        if ($this->current_category_obj->parent === 0) {
 
-            //if we have child categories
-	        if ( $subcategories ) {
 		        // get child categories
 		        $categories_objects = get_categories( array(
 			        'parent'     => $this->current_category_obj->cat_ID,

@@ -565,13 +565,7 @@ figure.aligncenter {
 .wpb_text_column ul,
 .td_block_text_with_title ul,
 .woocommerce #tab-description ul,
-.mce-content-body ul,
-.td-page-content ol,
-.td-post-content ol,
-.wpb_text_column ol,
-.td_block_text_with_title ol,
-.woocommerce #tab-description ol,
-.mce-content-body ol {
+.mce-content-body ul {
   margin-bottom: 26px;
 }
 .td-page-content p,

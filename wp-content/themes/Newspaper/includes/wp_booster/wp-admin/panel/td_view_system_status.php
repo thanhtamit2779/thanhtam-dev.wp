@@ -37,14 +37,10 @@ require_once "td_view_header.php";
     }
 
     // Theme name
-    $theme_premium_version = '';
-    if (defined('TD_DEPLOY_IS_PREMIUM') && TD_DEPLOY_IS_PREMIUM === false) {
-        $theme_premium_version = ' - Free Version - <a href="https://www.wpion.com/pricing/">Get the premium version now</a>';
-    }
     td_system_status::add('Theme config', array(
         'check_name' => 'Theme name',
         'tooltip' => 'Theme name',
-        'value' =>  TD_THEME_NAME . $theme_premium_version,
+        'value' =>  TD_THEME_NAME,
         'status' => 'info'
     ));
 
@@ -434,7 +430,7 @@ require_once "td_view_header.php";
     if ( $memory_limit < 67108864 ) {
         td_system_status::add('WordPress and plugins', array(
             'check_name' => 'WP Memory Limit',
-            'tooltip' => 'By default in WordPress the PHP memory limit is set to 40MB. With some plugins this limit may be reached and this affects your website functionality. To avoid this increase the memory limit to at least 64MB.',
+            'tooltip' => 'By default in wordpress the PHP memory limit is set to 40MB. With some plugins this limit may be reached and this affects your website functionality. To avoid this increase the memory limit to at least 64MB.',
             'value' => size_format( $memory_limit ) . '/request <span class="td-status-small-text">- We recommend setting memory to at least 64MB. The theme is well tested with a 40MB/request limit, but if you are using multiple plugins that may not be enough. See: <a target="_blank" href="http://codex.wordpress.org/Editing_wp-config.php#Increasing_memory_allocated_to_PHP">Increasing memory allocated to PHP</a>. You can also check our guide <a target="_blank" href="http://forum.tagdiv.com/system-status-parameters-guide/">here</a>.</span>',
             'status' => 'yellow'
         ));

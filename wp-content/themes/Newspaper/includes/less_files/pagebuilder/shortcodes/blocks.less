@@ -2286,7 +2286,6 @@
 */
 .td_block_homepage_full_1 {
   padding-bottom: 0;
-  margin-bottom: 0;
 }
 
 
@@ -2369,11 +2368,6 @@
     }
   }
 }
-.td_block_single_image {
-  a {
-    display: block;
-  }
-}
 
 
 /*  ----------------------------------------------------------------------------
@@ -2429,13 +2423,6 @@
         right: 0;
         margin: 10px;
         .transition(all 0.3s ease 0s);
-      }
-    }
-
-    &.td-no-img-custom-url {
-      a {
-        pointer-events: none;
-        cursor: default;
       }
     }
 
@@ -2765,7 +2752,6 @@
 
 .td-single-image-style-shadow,
 .td-single-image-style-bordered-shadow,
-.td-single-image-style-round-shadow,
 .td-single-image-style-round-border-shadow,
 .td-single-image-style-circle-shadow,
 .td-single-image-style-circle-border-shadow {
@@ -2781,7 +2767,7 @@
   &:after {
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: 32px;
     height: 30%;
     .box-shadow(0 15px 10px rgba(0,0,0,0.6));
     z-index: 0;
@@ -2968,17 +2954,6 @@
 /*  ----------------------------------------------------------------------------
     Block list menu
 */
-.td_block_list_menu {
-  .sub-menu {
-    padding-left: 22px;
-
-    li {
-      font-size: 13px;
-    }
-  }
-}
-
-
 // Inline style
 .td-list-menu-inline {
   padding: 0 60px;

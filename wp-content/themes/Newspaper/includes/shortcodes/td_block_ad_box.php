@@ -31,10 +31,7 @@ class td_block_ad_box extends td_block {
         // rec title
         $rec_title = '';
         if(!empty($custom_title)) {
-            $rec_title .= '<div class="td-block-title-wrap">';
-		        $rec_title .= $this->get_block_title();
-		        $rec_title .= $this->get_pull_down_filter();
-	        $rec_title .= '</div>';
+            $rec_title .= '<div class="td-block-title-wrap">' . $this->get_block_title() . '</div>';
         }
 
 	    if(!empty($spot_title)) {
@@ -55,17 +52,10 @@ class td_block_ad_box extends td_block {
             // 'tdc-placeholder-title' is to style de placeholder
             // block_uid is necessary to have a unique html template returned to the composer (without it the html change event doesn't trigger, and because of this the loader image is still preset)
 
-	        $block_template_id = $this->get_att('block_template_id');
-
-	        if (empty($block_template_id)) {
-			    $block_template_id = td_options::get('tds_global_block_template', 'td_block_template_1');
-		    }
-
-	        $ad_classes = $block_template_id . ' td-spot-id-' . $spot_id . ' ' . $this->block_uid . '_rand';
-	        //$ad_classes = ' td-spot-id-' . $spot_id . ' ' . $this->block_uid . '_rand';
-            //if ( empty( $spot_id ) || in_array( $spot_id, array( 'sidebar', 'custom_ad_1', 'custom_ad_2', 'custom_ad_3', 'custom_ad_4', 'custom_ad_5' ) ) ) {
+	        $ad_classes = 'td-spot-id-' . $spot_id . ' ' . $this->block_uid . '_rand';
+            if ( empty( $spot_id ) || in_array( $spot_id, array( 'sidebar', 'custom_ad_1', 'custom_ad_2', 'custom_ad_3', 'custom_ad_4', 'custom_ad_5' ) ) ) {
 	            $ad_classes .= ' td_block_wrap';
-            //}
+            }
             return  '<div class="' . $ad_classes . '">' . $this->get_block_css() . $rec_title . '<div class="tdc-placeholder-title"></div></div>';
         }
 
@@ -99,9 +89,11 @@ class td_block_ad_box extends td_block {
             }
         }
 
+
         //print_r($ad_array);
 
         return $buffy;
+
     }
 
 
@@ -149,10 +141,7 @@ class td_block_ad_box extends td_block {
         // rec title
         $rec_title = '';
         if(!empty($custom_title)) {
-            $rec_title .= '<div class="td-block-title-wrap">';
-		        $rec_title .= $this->get_block_title();
-		        $rec_title .= $this->get_pull_down_filter();
-	        $rec_title .= '</div>';
+            $rec_title .= '<div class="td-block-title-wrap">' . $this->get_block_title() . '</div>';
         }
         if(!empty($spot_title)) {
             $rec_title .= '<span class="td-adspot-title">' . $spot_title . '</span>';
@@ -617,10 +606,7 @@ class td_block_ad_box extends td_block {
 	    // rec title
         $rec_title = '';
         if(!empty($custom_title)) {
-            $rec_title .= '<div class="td-block-title-wrap">';
-		        $rec_title .= $this->get_block_title();
-		        $rec_title .= $this->get_pull_down_filter();
-	        $rec_title .= '</div>';
+            $rec_title .= '<div class="td-block-title-wrap">' . $this->get_block_title() . '</div>';
         }
         if(!empty($spot_title)) {
             $rec_title .= '<span class="td-adspot-title">' . $spot_title . '</span>';
@@ -686,21 +672,9 @@ class td_block_ad_box extends td_block {
 			);
 		}
 
-		$block_classes[] = $this->block_uid . '_rand';
-
-		$block_template_id = $this->get_att('block_template_id');
-
-        if (empty($block_template_id)) {
-		    $block_classes[] = td_options::get('tds_global_block_template', 'td_block_template_1');
-	    } else {
-	        $block_classes[] = $block_template_id;
-        }
-
 
 		//remove duplicates
 		$block_classes = array_unique($block_classes);
-
-
 
 		return implode(' ', $block_classes);
 	}

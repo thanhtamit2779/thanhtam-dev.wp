@@ -140,11 +140,7 @@ class td_block_template_13 extends td_block_template {
         // button text
         $button_text = $this->get_att('button_text');
         if (empty($button_text)) {
-            if (empty($category_id)) {
-		        $button_text = 'Read more';
-	        } else {
-		        $button_text = 'Continue to the category';
-	        }
+            $button_text = 'Continue to the category';
         }
 
         if (empty($custom_url)) {

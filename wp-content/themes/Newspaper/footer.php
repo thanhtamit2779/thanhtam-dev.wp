@@ -6,7 +6,7 @@
 <div class="td-main-content-wrap td-footer-instagram-container td-container-wrap <?php echo td_util::get_option('td_full_footer_instagram'); ?>">
     <?php
     //get the instagram id from the panel
-    $tds_footer_instagram_id = td_instagram::strip_instagram_user(td_util::get_option('tds_footer_instagram_id'));
+    $tds_footer_instagram_id = td_util::get_option('tds_footer_instagram_id');
     ?>
 
     <div class="td-instagram-user">
@@ -88,6 +88,32 @@ if (td_util::get_option('tds_footer') != 'no') {
 </div><!--close td-outer-wrap-->
 
 <?php wp_footer(); ?>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext,vietnamese" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- owl carousel -->
+    <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/owl-carousel/owl.theme.default.css">  
+    <script src="<?php bloginfo('template_directory'); ?>/owl-carousel/owl.carousel.js"></script>
+    <!-- fix sidebar -->
+    <script src="<?php bloginfo('template_directory'); ?>/js/jquery.sticky-kit.min.js"></script>
+    <script src="<?php bloginfo('template_directory'); ?>/js/my_js.js"></script>
+    <!-- slide thumbnail product --> 
+    <script src="<?php bloginfo('template_directory'); ?>/js/jquery.flexslider-min.js"></script>
+    <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/js/flexslider.css"> 
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/59c9fb2c4854b82732ff21e3/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
 
 </body>
 </html>

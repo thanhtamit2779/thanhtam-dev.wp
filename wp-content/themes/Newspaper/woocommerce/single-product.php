@@ -4,8 +4,8 @@
  *
  * Override this template by copying it to yourtheme/woocommerce/single-product.php
  *
- * @author 		WooThemes
- * @package 	WooCommerce/Templates
+ * @author      WooThemes
+ * @package     WooCommerce/Templates
  * @version     1.6.4
  */
 
@@ -36,6 +36,11 @@ if($loop_sidebar_position == 'sidebar_left') {
 }
 
 ?>
+<div class="woocommerce_breadcrumb">
+    <div class="td-container">
+        <?php woocommerce_breadcrumb();?>
+    </div>
+</div>
     <div class="td-main-content-wrap td-main-page-wrap td-container-wrap">
         <div class="td-container <?php echo $td_sidebar_position; ?>">
             <div class="td-pb-row">
@@ -43,15 +48,14 @@ if($loop_sidebar_position == 'sidebar_left') {
                 switch ($loop_sidebar_position) {
                     case 'sidebar_left':
                         ?>
-                        <div class="td-pb-span8 td-main-content <?php echo $td_sidebar_position; ?>-content">
+                        <div class="td-pb-span9 td-main-content <?php echo $td_sidebar_position; ?>-content">
                             <div class="td-ss-main-content">
-                                <?php
-                                    woocommerce_breadcrumb();
+                                <?php                                    
                                     woocommerce_content();
                                 ?>
                             </div>
                         </div>
-                        <div class="td-pb-span4 td-main-sidebar">
+                        <div class="td-pb-span3 td-main-sidebar">
                             <div class="td-ss-main-sidebar">
                                 <?php get_sidebar(); ?>
                             </div>
@@ -75,17 +79,11 @@ if($loop_sidebar_position == 'sidebar_left') {
 
                     default:
                         ?>
-                        <div class="td-pb-span8 td-main-content">
+                        <div class="td-main-content">
                             <div class="td-ss-main-content">
                                 <?php
-                                    woocommerce_breadcrumb();
                                     woocommerce_content();
                                 ?>
-                            </div>
-                        </div>
-                        <div class="td-pb-span4 td-main-sidebar">
-                            <div class="td-ss-main-sidebar">
-                                <?php get_sidebar(); ?>
                             </div>
                         </div>
                         <?php
