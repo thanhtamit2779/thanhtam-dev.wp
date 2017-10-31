@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+   <head>   
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1"> 
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">     
+      <meta name="robots" content="noindex, follow">
+      <title>Thiết kế website</title>
+      <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('template_directory'); ?>/landing-page/css/bootstrap.min.css" />
+      <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('template_directory'); ?>/landing-page/css/style.css?ver=<?php echo time()?>"  />
+   	  
+    
+      <link href="<?php bloginfo('template_directory'); ?>/landing-page/css/font-awesome.min.css" rel="stylesheet">
+      <link rel="stylesheet"  href="<?php bloginfo('template_directory'); ?>/landing-page/css/font-roboto.css" type='text/css' media='all' />
+ 	  <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/landing-page/slick/slick.css">
+  	  <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/landing-page/slick/slick-theme.css">
+  	  <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/landing-page/navaprakashspecialtimer/navaprakashspecialtimer.css">
+  	  <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/landing-page/wow/animate.css">
+  	  <script src="<?php bloginfo('template_directory'); ?>/landing-page/js/jquery-1.11.1.min.js"></script>
+   </head>
+   <body>
+      <header>
+    
+         <nav class="navbar navbar-inverse navbar-static-top">
+            <div class="container">
+               <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar3">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  </button>
+                  <a href="http://webdoctor.vn"><img src="<?php bloginfo('template_directory'); ?>/landing-page/images/logo.png" alt="logo" title="Logo">
+                  </a>
+               </div>
+               <div id="navbar3" class="navbar-collapse collapse">
+                  <ul class="nav navbar-nav navbar-center menu" id="menu-page-menu">
+                     <li><a href="<?php echo WEBDOCTOR_VN_URL ?>" title="Trang chủ">Trang chủ</a></li>
+                     <li><a href="<?php echo THEME_WEBDOCTOR_VN_URL?>" title="Website nổi bật">Website nổi bật</a></li>
+                     <li><a href="#" title="Ưu điểm">Ưu điểm</a></li>
+                     <li><a href="#" title="Tư vấn website">Tư vấn website</a></li>
+                     <li><a href="tel:0873004488" title="Hotline: 08.7300.4488">Hotline: 08.7300.4488</a></li>
+                  </ul>
+               </div>
+               <!--/.nav-collapse -->
+            </div>
+            <!--/.container-fluid -->
+         </nav>
+      </header>
